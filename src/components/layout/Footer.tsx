@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
@@ -77,7 +76,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="mr-2 h-5 w-5 text-brand-red shrink-0 mt-0.5" />
-                <span className="text-gray-300">Khanh Hoa, Vietnam</span>
+                <span className="text-black">Khanh Hoa, Vietnam</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5 text-brand-red shrink-0" />
