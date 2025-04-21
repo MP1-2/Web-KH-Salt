@@ -130,7 +130,7 @@ const ProductPage = () => {
             <div>
               <img src={product.image} alt={product.name[language]} className="w-full h-[400px] md:h-[500px] object-cover rounded-lg shadow-xl" />
             </div>
-            <div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h1 className="heading-lg mb-6">
                 <span className="text-brand-red">{product.name[language]}</span>
               </h1>
