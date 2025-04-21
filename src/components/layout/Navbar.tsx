@@ -7,14 +7,14 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setOpenDropdown(null);
   };
 
-  const toggleDropdown = (dropdown: string) => {
+  const toggleDropdown = (dropdown) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
@@ -67,6 +67,11 @@ const Navbar = () => {
             KHANH HOA SALT
           </Link>
 
+          {/* Hamburger Menu Button */}
+          <button className="lg:hidden" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link, idx) => (
@@ -92,22 +97,20 @@ const Navbar = () => {
               </div>
             ))}
 
-            {/* Language Toggle with Flag + Abbreviation */
-          <Button
-          onClick={handleLanguageToggle}
-          variant="outline"
-          className={`ml-4 border-white text-${language === 'en' ? 'black' : 'white'} hover:bg-brand-red`}
-          size="sm"
-        >
-          <span className="flex items-center space-x-2">
-            <img
-              src={language === 'en' ? '/path/to/english-flag.svg' : '/path/to/vietnam-flag.svg'}
-              alt={language === 'en' ? 'English' : 'Vietnamese'}
-              className="w-4 h-4"
-            />
-            <span>{language === 'en' ? 'EN' : 'VN'}</span>
-          </span>
-        </Button>
+            {/* Desktop Language Toggle */}
+            <Button
+              onClick={handleLanguageToggle}
+              variant="outline"
+              className={`ml-4 border-white ${
+                language === 'en' 
+                  ? 'text-black bg-white hover:bg-brand-red hover:text-white' 
+                  : 'bg-brand-red text-white hover:bg-white hover:text-black'
+              }`}
+              size="sm"
+            >
+              {renderLangLabel()}
+            </Button>
+          </div>
         </nav>
 
         {/* Mobile Navigation */}
@@ -144,7 +147,12 @@ const Navbar = () => {
               <Button
                 onClick={() => { handleLanguageToggle(); setIsMenuOpen(false); }}
                 variant="outline"
-                className="w-full border-white text-white hover:bg-brand-red"
+                className={`w-full border-white ${
+                  language === 'en' 
+                    ? 'text-black bg-white hover:bg-brand-red hover:text-white' 
+                    : 'bg-brand-red text-white hover:bg-white hover:text-black'
+                }`}
+                size="sm"
               >
                 {renderLangLabel()}
               </Button>
