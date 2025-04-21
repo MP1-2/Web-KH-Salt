@@ -72,4 +72,29 @@
   .text-body-sm {
     @apply text-sm leading-6;
   }
+  
+  /* New styles for brighter design */
+  .red-bg-section {
+    @apply bg-brand-red text-white py-12 px-4;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4 uppercase tracking-wider;
+  }
+  
+  .section-title-red {
+    @apply text-brand-red;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+  
+  .btn-red {
+    @apply bg-brand-red hover:bg-red-700 text-white font-semibold rounded-md;
+  }
+  
+  .section-divider {
+    @apply w-20 h-1 bg-brand-red mx-auto my-4;
+  }
 }
