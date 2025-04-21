@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
@@ -151,7 +150,7 @@ const ProductPage = () => {
                 </ul>
               </div>
               
-              <Button className="bg-brand-red hover:bg-red-700 text-white">
+              <Button className="bg-white text-black border-white hover:bg-gray-200 hover:text-black">
                 <Link to="/contact">
                   {t('product.contactUs')}
                 </Link>
