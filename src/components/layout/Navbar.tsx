@@ -92,21 +92,22 @@ const Navbar = () => {
               </div>
             ))}
 
-            {/* Language Toggle with Flag + Abbreviation */}
-            <Button
-              onClick={handleLanguageToggle}
-              variant="outline"
-              className="ml-4 border-white text-white hover:bg-brand-red"
-              size="sm"
-            >
-              {renderLangLabel()}
-            </Button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button className="lg:hidden p-2" onClick={toggleMenu}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* Language Toggle with Flag + Abbreviation */
+          <Button
+          onClick={handleLanguageToggle}
+          variant="outline"
+          className={`ml-4 border-white text-${language === 'en' ? 'black' : 'white'} hover:bg-brand-red`}
+          size="sm"
+        >
+          <span className="flex items-center space-x-2">
+            <img
+              src={language === 'en' ? '/path/to/english-flag.svg' : '/path/to/vietnam-flag.svg'}
+              alt={language === 'en' ? 'English' : 'Vietnamese'}
+              className="w-4 h-4"
+            />
+            <span>{language === 'en' ? 'EN' : 'VN'}</span>
+          </span>
+        </Button>
         </nav>
 
         {/* Mobile Navigation */}
