@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -29,7 +28,11 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-black">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-white text-white bg-transparent hover:bg-white hover:text-brand-black"
+            >
               <Link to="/contact">
                 {t('nav.contact')}
               </Link>
