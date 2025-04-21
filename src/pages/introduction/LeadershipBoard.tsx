@@ -45,10 +45,9 @@ const LeadershipBoard = () => {
     <Layout>
       <section className="w-full py-10 bg-white">
         <div className="section-container max-w-6xl mx-auto">
-          <BackButton to="/introduction" label="Back to Introduction" />
-          
-          {/* Hero Title with Red Background Banner */}
-          <div className="bg-brand-red text-white py-6 px-8 mb-10 rounded-lg shadow-md">
+          <BackButton label="Back to Home" />
+          {/* Hero Title with Blue Background Banner */}
+          <div className="bg-[#1A237E] text-white py-6 px-8 mb-10 shadow-md">
             <h1 className="text-3xl md:text-4xl font-bold tracking-wider uppercase text-center">
               Leadership Board
             </h1>
@@ -62,18 +61,20 @@ const LeadershipBoard = () => {
               <Card
                 key={leader.name}
                 className="flex overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow"
+                style={{ background: "#f8fafd" }}
               >
-                <div className="w-1/3 bg-gray-100 flex items-center justify-center p-4">
+                <div className="w-1/3 bg-[#dbeafe] flex items-center justify-center p-4">
                   <img
                     src={leader.img}
                     alt={leader.name}
-                    className="rounded-full border-4 border-brand-red w-24 h-24 object-cover"
+                    className="border-4 border-brand-red w-24 h-24 object-cover bg-white"
+                    style={{ borderRadius: 0 }}
                   />
                 </div>
                 <div className="w-2/3 p-6">
                   <h2 className="font-bold text-xl text-brand-red mb-1">{leader.name}</h2>
-                  <div className="mb-2 text-sm text-gray-500 font-medium">{leader.title}</div>
-                  <p className="text-gray-700 text-sm mb-3">{leader.bio}</p>
+                  <div className="mb-2 text-sm text-black font-medium">{leader.title}</div>
+                  <p className="text-black text-sm mb-3">{leader.bio}</p>
                   {leader.linkedin ? (
                     <a
                       href={leader.linkedin}

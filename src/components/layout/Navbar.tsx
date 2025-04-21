@@ -5,6 +5,17 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
+// Simple flag icons
+const FlagIcon = ({ lang }: { lang: 'en' | 'vi' }) => (
+  <span className="inline-block text-xl align-middle mr-1">
+    {lang === "en" ? (
+      <span role="img" aria-label="English">🇬🇧</span>
+    ) : (
+      <span role="img" aria-label="Vietnamese">🇻🇳</span>
+    )}
+  </span>
+);
+
 const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,11 +35,7 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    {
-      title: t('nav.home'),
-      path: '/',
-      hasDropdown: false
-    },
+    { title: t('nav.home'), path: '/', hasDropdown: false },
     {
       title: t('nav.introduction'),
       path: '/introduction',
@@ -50,11 +57,7 @@ const Navbar = () => {
         { title: t('products.product3'), path: '/products/specialty-salt' }
       ]
     },
-    {
-      title: t('nav.career'),
-      path: '/career',
-      hasDropdown: false
-    },
+    { title: t('nav.career'), path: '/career', hasDropdown: false },
     {
       title: t('nav.news'),
       path: '/news',
@@ -65,26 +68,17 @@ const Navbar = () => {
         { title: t('news.csr'), path: '/news/csr' }
       ]
     },
-    {
-      title: t('nav.contact'),
-      path: '/contact',
-      hasDropdown: false
-    },
-    {
-      title: t('nav.distribution'),
-      path: '/distribution',
-      hasDropdown: false
-    }
+    { title: t('nav.contact'), path: '/contact', hasDropdown: false },
+    { title: t('nav.distribution'), path: '/distribution', hasDropdown: false }
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-brand-black text-white z-50">
+    <header className="fixed top-0 left-0 w-full bg-navy-900 text-black border-b border-gray-200 z-50" style={{ background: '#1A237E' }}>
       <div className="section-container">
         <nav className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold flex items-center">
+          <Link to="/" className="text-xl font-bold flex items-center text-brand-red">
             KHANH HOA SALT
           </Link>
-
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link, index) => (
@@ -92,24 +86,23 @@ const Navbar = () => {
                 {link.hasDropdown ? (
                   <button
                     onClick={() => toggleDropdown(link.title)}
-                    className="flex items-center space-x-1 py-2"
+                    className="flex items-center space-x-1 py-2 text-black"
                   >
                     <span>{link.title}</span>
                     <ChevronDown size={16} />
                   </button>
                 ) : (
-                  <Link to={link.path} className="py-2">
+                  <Link to={link.path} className="py-2 text-black">
                     {link.title}
                   </Link>
                 )}
-
                 {link.hasDropdown && (
-                  <div className={`absolute left-0 top-full min-w-[200px] bg-brand-black shadow-lg transform ${openDropdown === link.title ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'} transition-all duration-300`}>
+                  <div className={`absolute left-0 top-full min-w-[200px] bg-white border border-gray-100 shadow-lg transform ${openDropdown === link.title ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'} transition-all duration-300`}>
                     {link.dropdownItems?.map((item, itemIndex) => (
                       <Link
                         key={itemIndex}
                         to={item.path}
-                        className="block px-4 py-3 hover:bg-brand-red hover:text-white transition-colors"
+                        className="block px-4 py-3 hover:bg-brand-red hover:text-white transition-colors text-black"
                         onClick={() => setOpenDropdown(null)}
                       >
                         {item.title}
@@ -119,44 +112,43 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-
             <Button
               onClick={handleLanguageToggle}
               variant="outline"
-              className="ml-4 border-white text-white hover:bg-brand-red"
+              className="ml-4 border-black text-black bg-white hover:bg-brand-red hover:text-white transition-colors"
               size="sm"
+              aria-label="Toggle language"
             >
+              <FlagIcon lang={language === 'en' ? 'vi' : 'en'} />
               {language === 'en' ? 'VI' : 'EN'}
             </Button>
           </div>
-
           {/* Mobile Menu Toggle */}
-          <button className="lg:hidden p-2" onClick={toggleMenu}>
+          <button className="lg:hidden p-2 text-black" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
-
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-brand-black absolute top-16 left-0 w-full py-2 shadow-lg z-50 animate-fade-in">
+          <div className="lg:hidden bg-white absolute top-16 left-0 w-full py-2 shadow-lg z-50 animate-fade-in">
             {navLinks.map((link, index) => (
               <div key={index} className="px-4">
                 {link.hasDropdown ? (
                   <>
                     <button
                       onClick={() => toggleDropdown(link.title)}
-                      className="flex items-center justify-between w-full py-3 border-b border-gray-700"
+                      className="flex items-center justify-between w-full py-3 border-b border-gray-200 text-black"
                     >
                       <span>{link.title}</span>
                       <ChevronDown size={16} className={`transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`} />
                     </button>
                     {openDropdown === link.title && (
-                      <div className="pl-4 bg-gray-900 animate-slide-in">
+                      <div className="pl-4 bg-slate-100 animate-slide-in">
                         {link.dropdownItems?.map((item, itemIndex) => (
                           <Link
                             key={itemIndex}
                             to={item.path}
-                            className="block py-3 border-b border-gray-800"
+                            className="block py-3 border-b border-gray-200 text-black"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {item.title}
@@ -168,7 +160,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={link.path}
-                    className="block py-3 border-b border-gray-700"
+                    className="block py-3 border-b border-gray-200 text-black"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.title}
@@ -183,8 +175,10 @@ const Navbar = () => {
                   setIsMenuOpen(false);
                 }}
                 variant="outline"
-                className="w-full border-white text-white hover:bg-brand-red"
+                className="w-full border-black text-black bg-white hover:bg-brand-red hover:text-white"
+                aria-label="Toggle language"
               >
+                <FlagIcon lang={language === 'en' ? 'vi' : 'en'} />
                 {language === 'en' ? 'Switch to Vietnamese' : 'Switch to English'}
               </Button>
             </div>
