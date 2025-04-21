@@ -23,7 +23,7 @@
     --border: 0 0% 85%;               /* light gray border */
     --input: 0 0% 98%;                /* nearly white input */
     --ring: 0 80% 80%;
-    --radius: 0.7rem;
+    --radius: 0rem;                   /* all radii set to 0 */
   }
 
   body {
@@ -59,28 +59,32 @@
 
   .card, .card-hover {
     background: #fff !important;
-    border-radius: 1rem !important;
+    border-radius: 0 !important;
     box-shadow: 0 4px 24px 0 rgba(234,56,76,0.07);
   }
 
   /* Buttons/accent styles */
   .btn-red {
     @apply bg-[#ea384c] text-white hover:bg-[#d32a3b];
+    border-radius: 0;
   }
   .btn-outline-red {
     @apply border-[#ea384c] text-[#ea384c] hover:bg-[#ea384c] hover:text-white;
+    border-radius: 0;
   }
 
   /* Inputs/fields */
   input, textarea {
     background: #fafafb;
     color: #111;
+    border-radius: 0;
   }
 
-  /* Footer heavy red */
+  /* Footer black or dark grey */
   footer.bg-brand-red, .bg-brand-red, .navbar-bg {
-    background: #ea384c !important;
+    background: #222222 !important; /* dark grey */
     color: #fff !important;
+    border-radius: 0 !important;
   }
 
   /* General backgrounds and sectioning */
