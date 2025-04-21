@@ -124,13 +124,13 @@ const ProductPage = () => {
 
   return (
     <Layout>
-      <div className="pt-10 pb-20">
+      <div className="pt-10 pb-20 bg-white">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <img src={product.image} alt={product.name[language]} className="w-full h-[400px] md:h-[500px] object-cover rounded-lg shadow-xl" />
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div>
               <h1 className="heading-lg mb-6">
                 <span className="text-brand-red">{product.name[language]}</span>
               </h1>
