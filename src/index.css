@@ -6,28 +6,28 @@
 
 @layer base {
   :root {
-    --background: 0 100% 98%;         /* very light red-ish, almost white */
-    --foreground: 0 0% 7%;            /* near-black text */
-    --card: 0 100% 100%;              /* pure white for cards */
+    --background: 0 0% 98%;         /* very light gray, almost white */
+    --foreground: 0 0% 7%;          /* near-black text */
+    --card: 0 100% 100%;            /* pure white for cards */
     --card-foreground: 0 0% 10%;
-    --primary: 352 89% 58%;           /* main red */
-    --primary-foreground: 0 0% 100%;  /* white text on red */
-    --secondary: 0 100% 97%;          /* light red/pink */
+    --primary: 352 89% 58%;         /* main red */
+    --primary-foreground: 0 0% 100%;/* white text on red */
+    --secondary: 0 100% 97%;        /* light red/pink */
     --secondary-foreground: 0 0% 10%; /* dark text on secondary */
-    --accent: 0 85% 89%;              /* soft light red-pink */
-    --accent-foreground: 0 0% 7%;     /* black on accent */
-    --muted: 0 0% 93%;                /* light gray */
+    --accent: 0 85% 89%;            /* soft light red-pink */
+    --accent-foreground: 0 0% 7%;   /* black on accent */
+    --muted: 0 0% 93%;              /* light gray */
     --muted-foreground: 0 0% 30%;
-    --destructive: 0 84.2% 60.2%;     /* strong red */
+    --destructive: 0 84.2% 60.2%;   /* strong red */
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 85%;               /* light gray border */
-    --input: 0 0% 98%;                /* nearly white input */
+    --border: 0 0% 85%;             /* light gray border */
+    --input: 0 0% 98%;              /* nearly white input */
     --ring: 0 80% 80%;
-    --radius: 0rem;                   /* all radii set to 0 */
+    --radius: 0rem;                 /* all radii set to 0 */
   }
 
   body {
-    @apply bg-[hsl(0_100%_98%)] text-black antialiased;
+    @apply bg-[hsl(var(--background))] text-black antialiased;
   }
 
   .section-container {
@@ -38,10 +38,19 @@
   .hero-bg {
     background: linear-gradient(120deg, #fff4f6 0%, #fae0e3 90%);
   }
-  .red-section {
-    background: linear-gradient(111deg, #fff4f6 30%, #f8d4da 100%);
-    color: #111;
+
+  /* Replace blue section backgrounds with light grey */
+  .blue-section {
+    background: #f3f3f3 !important; /* soft light gray */
+    color: #111 !important;
   }
+
+  /* Replace red-section with very subtle light red or light gray to reduce red background */
+  .red-section {
+    background: #faf5f5 !important; /* very pale red/pink */
+    color: #111 !important;
+  }
+
   .red-accent {
     background: linear-gradient(114deg, #ea384c 0%, #ff868d 100%);
     color: #fff;
@@ -89,9 +98,9 @@
 
   /* General backgrounds and sectioning */
   .bg-red-light {
-    background: #fff4f6 !important;
+    background: #fff4f6 !important; /* keep but only used minimally */
   }
   .bg-grey-light {
-    background: #f1f1f1 !important;
+    background: #f3f3f3 !important; /* neutral light gray */
   }
 }
