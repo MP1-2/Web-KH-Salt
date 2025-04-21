@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Users, Globe, Award, Briefcase } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const stats = [
   { label: "Years in Business", value: "20+", icon: Briefcase },
@@ -22,67 +23,69 @@ const AboutUs = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="max-w-5xl mx-auto px-5 py-10 min-h-[80vh] flex flex-col gap-10">
+    <section className="section-container py-14 min-h-[80vh] flex flex-col gap-12">
       <BackButton to="/" label="Back to Home" />
-      <header className="mb-2">
-        <h1 className="heading-lg text-brand-red mb-2">About Us</h1>
-        <nav className="text-sm flex gap-4 mb-2">
-          <a href="#history" className="text-brand-red underline-offset-4 hover:underline">Our History</a>
-          <a href="#values" className="text-brand-red underline-offset-4 hover:underline">Our Values</a>
+      {/* Title & Navigation */}
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3 gap-2">
+        <h1 className="heading-lg text-brand-red">About Us</h1>
+        <nav className="text-sm flex flex-row gap-4">
+          <a href="#history" className="text-brand-red font-semibold underline-offset-4 hover:underline transition">Our History</a>
+          <a href="#values" className="text-brand-red font-semibold underline-offset-4 hover:underline transition">Our Values</a>
         </nav>
-      </header>
-      {/* Responsive Gallery & Text */}
-      <div id="history" className="flex flex-col md:flex-row gap-8 animate-fade-in">
-        {/* Image Gallery */}
-        <div className="flex-1 flex flex-col gap-4 md:max-w-[320px]">
-          <div className="flex gap-2 md:gap-4">
-            <div className="w-1/2">
-              <img src={images[0].src} alt={images[0].alt} className="rounded-lg w-full h-auto object-cover shadow" style={{maxHeight: 220}} />
-              <div className="italic text-xs mt-1 text-center text-gray-500">{images[0].caption}</div>
-            </div>
-            <div className="w-1/2 flex flex-col gap-2">
-              <img src={images[1].src} alt={images[1].alt} className="rounded-lg w-full h-auto object-cover shadow" style={{maxHeight: 100}} />
-              <img src={images[2].src} alt={images[2].alt} className="rounded-lg w-full h-auto object-cover shadow" style={{maxHeight: 100}} />
-            </div>
-          </div>
-        </div>
-        {/* History Content */}
-        <div className="flex-[2] flex flex-col gap-3 text-body">
-          <h2 className="heading-md text-brand-red mb-1">Our History</h2>
-          <p>
-            Founded more than two decades ago in the sun-baked heart of Khanh Hoa province, our company has grown from a modest salt cooperative into one of Vietnam's most innovative and respected salt producers. From the very beginning, our vision has been anchored in blending traditional Vietnamese salt-harvesting methods with modern production technologies. 
-          </p>
-          <p>
-            Through years of dedication, adaptability, and investment in human capital, we've reached significant milestones: the expansion of our production facility in 2008, the launch of our export division in 2013, and winning the prestigious National Quality Award in 2022. 
-          </p>
-          <p>
-            Today, our current operations span the entire supply chain, integrating sustainable harvesting, advanced purification, and rigorous quality assurance. Our salt products reach kitchens, factories, and markets in over 30 countries, but our roots and values remain firmly in Vietnam.
-          </p>
-        </div>
       </div>
-      {/* Stats Box */}
-      <div className="bg-black rounded-xl flex flex-wrap justify-between items-center gap-5 p-6 md:p-8 shadow-md" style={{borderRadius: 16}}>
-        {stats.map((stat, idx) => (
-          <div key={stat.label} className="flex flex-col items-center flex-1 min-w-[120px]">
-            <stat.icon className="text-brand-red mb-1" size={32} />
-            <span className="text-2xl text-white font-bold">{stat.value}</span>
-            <span className="text-xs text-zinc-400">{stat.label}</span>
+      {/* Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-fade-in">
+        {/* Gallery Card */}
+        <Card className="bg-white/70 rounded-2xl border-none shadow-lg flex flex-col min-h-[310px] justify-between">
+          <div className="flex flex-row gap-3 p-6 pb-2">
+            <img src={images[0].src} alt={images[0].alt} className="rounded-xl w-1/2 object-cover shadow-lg max-h-44" />
+            <div className="flex flex-col gap-3 w-1/2">
+              <img src={images[1].src} alt={images[1].alt} className="rounded-xl object-cover shadow max-h-20" />
+              <img src={images[2].src} alt={images[2].alt} className="rounded-xl object-cover shadow max-h-20" />
+            </div>
           </div>
+          <div className="flex py-3 px-6 gap-2 flex-wrap justify-between">
+            {images.map((img, i) => (
+              <div key={img.alt} className="italic text-xs text-center text-gray-600 w-1/3">{img.caption}</div>
+            ))}
+          </div>
+        </Card>
+        {/* Text Card */}
+        <Card className="bg-white/70 rounded-2xl border-none shadow-lg flex flex-col justify-center p-8 min-h-[310px]">
+          <h2 id="history" className="heading-md text-brand-red mb-3">Our History</h2>
+          <p className="mb-2 text-body">
+            Founded more than two decades ago in the sun-baked heart of Khanh Hoa province, our company has grown from a modest salt cooperative into one of Vietnam's most innovative and respected salt producers. Our vision has always been to blend traditional methods with modern technologies.
+          </p>
+          <p className="mb-2 text-body">
+            Major milestones include facility expansion (2008), the launch of our export division (2013), and winning the National Quality Award (2022). Today, we operate across the entire supply chain, delivering world-class salt to over 30 countries.
+          </p>
+          <p className="text-body">
+            Despite global reach, our roots and values remain firmly in Vietnam.
+          </p>
+        </Card>
+      </div>
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+        {stats.map((stat, idx) => (
+          <Card key={stat.label} className="flex flex-col items-center py-6 shadow-md bg-white/90 border-none">
+            <stat.icon className="text-brand-red mb-2" size={34} />
+            <span className="text-3xl text-black font-bold">{stat.value}</span>
+            <span className="text-sm text-gray-500 mt-1">{stat.label}</span>
+          </Card>
         ))}
       </div>
       {/* Values Section */}
-      <div id="values" className="flex flex-col gap-2 mt-2">
-        <h2 className="heading-md text-brand-red mb-1">Our Values</h2>
-        <p>
-          At Khanh Hoa Salt, our work is underpinned by values that have guided us for twenty years: a commitment to quality, deep respect for our people and communities, environmental responsibility, and a drive for innovation. We foster an inclusive workplace, invest in sustainable development, and uphold business ethics in everything we do. Our goal is to deliver value not only to our customers and partners, but also to the communities who have supported us from our inception.
+      <Card className="p-8 rounded-2xl shadow-lg bg-white/70 border-none">
+        <h2 id="values" className="heading-md text-brand-red mb-3">Our Values</h2>
+        <p className="mb-2">
+          At Khanh Hoa Salt, our values are quality, respect for community, environmental stewardship, and innovation. We uphold ethics, inclusivity, and sustainable growth—delivering value to customers and the communities that made us.
         </p>
         <p>
-          Our reputation is built on trust and product purity, and we continue to set the benchmark for excellence in the salt industry in Vietnam and across Asia.
+          Reputation is our foundation: trust and product purity drive our leadership in Vietnam and Asia.
         </p>
-      </div>
-      {/* Call-to-action */}
-      <div>
-        <Button className="mt-4 bg-brand-red text-white px-6 py-3 text-lg rounded-lg hover:scale-105 transition-transform" onClick={() => navigate('/contact')}>
+      </Card>
+      <div className="flex justify-center">
+        <Button className="mt-4 bg-brand-red text-white px-8 py-3 text-lg rounded-xl hover:scale-105 shadow transition-transform" onClick={() => navigate('/contact')}>
           Contact Us
         </Button>
       </div>
