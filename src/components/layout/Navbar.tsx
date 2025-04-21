@@ -64,10 +64,10 @@ const Navbar = () => {
       <div className="section-container">
         <nav className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
-            {/* Red Sample Logo (SVG Placeholder) */}
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600">
-              <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 4.5L18 7.5V16.5L12 19.5L6 16.5V7.5L12 4.5Z" fill="currentColor" />
-              <path d="M12 9L15 11V15L12 17L9 15V11L12 9Z" fill="currentColor" opacity="0.7" />
+            {/* Updated Red Sample Logo (SVG Placeholder) to match the image */}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600">
+              <path d="M12 2L3 7V17L12 22L21 17V7L12 2ZM12 4L19 8V16L12 20L5 16V8L12 4Z" fill="currentColor" />
+              <path d="M12 7L8 9V15L12 17L16 15V9L12 7ZM12 9L14 10V14L12 15L10 14V10L12 9Z" fill="currentColor" opacity="0.5" />
             </svg>
             {/* Red Text for Khanh Hoa Salt */}
             <span className="text-xl font-bold text-red-600">KHANH HOA SALT</span>
