@@ -41,40 +41,49 @@ const leaders = [
 
 const LeadershipBoard = () => {
   return (
-    <section className="section-container py-14 min-h-[80vh] flex flex-col gap-8">
-      <BackButton to="/" label="Back to Home" />
-      <h1 className="heading-lg text-brand-red mb-3 text-center">Leadership Board</h1>
-      <p className="text-body max-w-2xl mx-auto text-center mb-8">
-        Meet the diverse leaders driving Khanh Hoa Salt’s vision, innovation, and commitment—each bringing a unique legacy and leadership story.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-        {leaders.map((leader) => (
-          <Card
-            key={leader.name}
-            className="rounded-2xl bg-white/90 text-black shadow-lg p-7 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-xl animate-fade-in"
-          >
-            <img
-              src={leader.img}
-              alt={leader.name}
-              className="rounded-full border-4 border-brand-red w-24 h-24 object-cover mb-3 shadow"
-            />
-            <h2 className="font-bold text-lg text-brand-red mb-1">{leader.name}</h2>
-            <div className="mb-2 text-sm text-gray-500 text-center">{leader.title}</div>
-            <p className="text-gray-700 text-sm mb-3 text-center">{leader.bio}</p>
-            {leader.linkedin ? (
-              <a
-                href={leader.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-brand-red font-medium hover:underline mt-auto"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-                <span>LinkedIn</span>
-              </a>
-            ) : null}
-          </Card>
-        ))}
+    <section className="w-full flex flex-col items-center min-h-[80vh] pt-6 pb-16 bg-white">
+      <div className="section-container w-full max-w-6xl">
+        <BackButton to="/introduction" label="Back to Introduction" />
+
+        {/* Hero Title */}
+        <div className="text-center mb-8">
+          <h1 className="heading-lg text-brand-red mb-2 tracking-wider" style={{ letterSpacing: '1.5px' }}>
+            LEADERSHIP <span className="text-black">BOARD</span>
+          </h1>
+          <div className="mx-auto w-20 h-1 bg-brand-red rounded-full mb-2"></div>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Meet the diverse leaders driving Khanh Hoa Salt’s vision, innovation, and community impact.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
+          {leaders.map((leader) => (
+            <Card
+              key={leader.name}
+              className="rounded-2xl bg-white text-black border border-gray-100 shadow-lg p-8 flex flex-col items-center hover:shadow-xl transition duration-200"
+            >
+              <img
+                src={leader.img}
+                alt={leader.name}
+                className="rounded-full border-4 border-brand-red w-24 h-24 object-cover mb-3 shadow"
+              />
+              <h2 className="font-bold text-xl text-brand-red mb-1 text-center">{leader.name}</h2>
+              <div className="mb-2 text-sm text-gray-500 text-center font-medium">{leader.title}</div>
+              <p className="text-gray-700 text-sm mb-3 text-center">{leader.bio}</p>
+              {leader.linkedin ? (
+                <a
+                  href={leader.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-brand-red font-semibold hover:underline mt-auto"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={18} />
+                  <span>LinkedIn</span>
+                </a>
+              ) : null}
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
