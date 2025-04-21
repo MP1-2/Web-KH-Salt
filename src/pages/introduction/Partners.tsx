@@ -1,4 +1,3 @@
-
 import React from "react";
 import BackButton from "@/components/common/BackButton";
 import { Card } from "@/components/ui/card";
@@ -51,7 +50,7 @@ const partners = [
 const Partners = () => {
   return (
     <section className="section-container py-14 min-h-[70vh] flex flex-col gap-8">
-      <BackButton to="/" label="Back to Home" />
+      <BackButton label="Back to Home" />
       <h1 className="heading-lg text-brand-red mb-4 text-center">Partners</h1>
       <p className="text-body max-w-2xl mx-auto text-center mb-7">We proudly collaborate with industry-leading partners who help deliver Khanh Hoa Salt products and values to every region and continent.</p>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">

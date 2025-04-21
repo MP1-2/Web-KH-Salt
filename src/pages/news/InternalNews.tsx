@@ -1,4 +1,3 @@
-
 import React from "react";
 import Layout from "@/components/layout/Layout";
 import BackButton from "@/components/common/BackButton";
@@ -28,7 +27,7 @@ const InternalNews: React.FC = () => {
   return (
     <Layout>
       <section className="section-container py-12">
-        <BackButton to="/" label="Back to Home" />
+        <BackButton label="Back to Home" />
         <h1 className="heading-lg text-brand-red mb-6 flex items-center gap-2">
           <Newspaper className="text-brand-red" /> Internal News
         </h1>

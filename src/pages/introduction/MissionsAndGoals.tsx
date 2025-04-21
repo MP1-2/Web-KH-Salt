@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Globe, Award, Briefcase, Leaf } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
@@ -56,10 +55,9 @@ const goals = [
 
 const MissionsAndGoals = () => {
   return (
-    <section className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-6 pb-16">
+    <section className="section-container py-14 min-h-[70vh] flex flex-col gap-8">
+      <BackButton label="Back to Home" />
       <div className="section-container w-full max-w-6xl">
-        <BackButton to="/introduction" label="Back to Introduction" />
-
         {/* Title */}
         <div className="text-center mb-8">
           <h1 className="heading-lg text-brand-red mb-2 tracking-wider" style={{ letterSpacing: '1.5px' }}>

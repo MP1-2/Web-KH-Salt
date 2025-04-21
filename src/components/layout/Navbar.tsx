@@ -5,14 +5,16 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
-// Simple flag icons
-const FlagIcon = ({ lang }: { lang: 'en' | 'vi' }) => (
-  <span className="inline-block text-xl align-middle mr-1">
-    {lang === "en" ? (
-      <span role="img" aria-label="English">🇬🇧</span>
-    ) : (
-      <span role="img" aria-label="Vietnamese">🇻🇳</span>
-    )}
+// Both flag icons, always shown for language toggle
+const LanguageFlags = ({ language }: { language: 'en' | 'vi' }) => (
+  <span className="inline-flex items-center gap-1 text-2xl">
+    <span className={language === "en" ? "opacity-100" : "opacity-40"}>
+      🇬🇧
+    </span>
+    <span className="mx-1 text-lg text-[#222] font-semibold select-none">/</span>
+    <span className={language === "vi" ? "opacity-100" : "opacity-40"}>
+      🇻🇳
+    </span>
   </span>
 );
 
@@ -73,10 +75,10 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-navy-900 text-black border-b border-gray-200 z-50" style={{ background: '#1A237E' }}>
+    <header className="fixed top-0 left-0 w-full bg-[#1A237E] text-black border-b border-gray-200 z-50 transition-all">
       <div className="section-container">
         <nav className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold flex items-center text-brand-red">
+          <Link to="/" className="text-xl font-bold flex items-center text-brand-red tracking-wide uppercase">
             KHANH HOA SALT
           </Link>
           {/* Desktop Navigation */}
@@ -86,13 +88,13 @@ const Navbar = () => {
                 {link.hasDropdown ? (
                   <button
                     onClick={() => toggleDropdown(link.title)}
-                    className="flex items-center space-x-1 py-2 text-black"
+                    className="flex items-center space-x-1 py-2 text-black focus:outline-none focus:text-brand-red font-medium"
                   >
                     <span>{link.title}</span>
                     <ChevronDown size={16} />
                   </button>
                 ) : (
-                  <Link to={link.path} className="py-2 text-black">
+                  <Link to={link.path} className="py-2 text-black font-medium hover:text-brand-red">
                     {link.title}
                   </Link>
                 )}
@@ -115,12 +117,11 @@ const Navbar = () => {
             <Button
               onClick={handleLanguageToggle}
               variant="outline"
-              className="ml-4 border-black text-black bg-white hover:bg-brand-red hover:text-white transition-colors"
+              className="ml-6 border-2 border-brand-red bg-white py-2 px-4 hover:bg-brand-red/90 hover:text-white transition-colors font-bold shadow-lg"
               size="sm"
               aria-label="Toggle language"
             >
-              <FlagIcon lang={language === 'en' ? 'vi' : 'en'} />
-              {language === 'en' ? 'VI' : 'EN'}
+              <LanguageFlags language={language} />
             </Button>
           </div>
           {/* Mobile Menu Toggle */}
@@ -168,18 +169,17 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            <div className="px-4 py-4">
+            <div className="px-4 py-4 flex justify-center">
               <Button
                 onClick={() => {
                   handleLanguageToggle();
                   setIsMenuOpen(false);
                 }}
                 variant="outline"
-                className="w-full border-black text-black bg-white hover:bg-brand-red hover:text-white"
+                className="w-max border-2 border-brand-red bg-white py-2 px-5 font-bold shadow-lg text-black hover:bg-brand-red/90 hover:text-white"
                 aria-label="Toggle language"
               >
-                <FlagIcon lang={language === 'en' ? 'vi' : 'en'} />
-                {language === 'en' ? 'Switch to Vietnamese' : 'Switch to English'}
+                <LanguageFlags language={language} />
               </Button>
             </div>
           </div>

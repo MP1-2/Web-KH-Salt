@@ -1,4 +1,3 @@
-
 import React from "react";
 import Layout from "@/components/layout/Layout";
 import BackButton from "@/components/common/BackButton";
@@ -18,16 +17,15 @@ const DUMMY_ARTICLE = {
 };
 
 const NewsArticleDetail: React.FC = () => {
-  // You would actually fetch the article by section/id
   const { type, id } = useParams();
   const navigate = useNavigate();
 
-  const article = DUMMY_ARTICLE; // Would switch based on type and id
+  const article = DUMMY_ARTICLE;
 
   return (
     <Layout>
       <section className="section-container py-10">
-        <BackButton to={type ? `/news/${type}` : "/"} label="Back to News List" />
+        <BackButton label="Back to Home" />
         <h1 className="heading-lg text-brand-red mb-2">{article.title}</h1>
         <div className="text-gray-600 mb-5 text-sm flex gap-2">
           <span>{article.date}</span>
@@ -36,7 +34,6 @@ const NewsArticleDetail: React.FC = () => {
         </div>
         <img src={article.image} alt="" className="rounded-lg mb-4 max-h-96 mx-auto object-cover" />
         <p className="text-body">{article.content}</p>
-
         <div className="mt-10">
           <h2 className="heading-sm text-brand-red mb-3">Related Articles</h2>
           <ul className="space-y-2">
@@ -56,4 +53,5 @@ const NewsArticleDetail: React.FC = () => {
     </Layout>
   );
 };
+
 export default NewsArticleDetail;
