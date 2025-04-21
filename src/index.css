@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -113,13 +114,42 @@
     box-shadow: 0 1px 18px 0 #ededed33;
   }
 
-  /* Fallback for dark overlays (used in hero, banners) */
-  .bg-hero-gradient {
-    background: linear-gradient(90deg, rgba(255,255,255,0.90) 60%, rgba(255,0,35,0.03) 100%);
+  /* Force language toggle button text to solid black */
+  button[class*="btn"][class*="outline"] {
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+  button[class*="btn"][class*="outline"]:hover {
+    background-color: #ff0023 !important; /* brand red hover */
+    color: #fff !important;
+    border-color: #ff0023 !important;
   }
 
-  /* Remove old overlays for more airiness */
-  .bg-gradient-to-r, .bg-gradient-to-l, .bg-gradient-to-br {
-    background: transparent !important;
+  /* Make links inside footer dark for visibility on white bg */
+  footer a {
+    color: #000 !important;
+  }
+  footer a:hover {
+    color: #ff0023 !important;
+  }
+  footer,
+  footer ul,
+  footer li,
+  footer p {
+    color: #000 !important;
+  }
+
+  /* Text in cover picture should be solid black (adjust background layers accordingly if needed) */
+  .hero-text, .hero-text * {
+    color: #000 !important;
+  }
+
+  /* Remove all rounded corners site-wide */
+  .rounded, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-full {
+    border-radius: 0 !important;
+  }
+  /* Remove rounding on cards */
+  .card, .card-hover {
+    border-radius: 0 !important;
   }
 }
