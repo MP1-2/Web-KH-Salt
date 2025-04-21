@@ -60,11 +60,17 @@ const Navbar = () => {
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#ffeded] text-white z-50">
+    <header className="fixed top-0 left-0 w-full bg-[#ffeded] text-black z-50">
       <div className="section-container">
         <nav className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold flex items-center">
-            KHANH HOA SALT
+          <Link to="/" className="flex items-center space-x-2">
+            {/* Red Sample Logo (SVG Placeholder) */}
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600">
+              <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 4.5L18 7.5V16.5L12 19.5L6 16.5V7.5L12 4.5Z" fill="currentColor" />
+              <path d="M12 9L15 11V15L12 17L9 15V11L12 9Z" fill="currentColor" opacity="0.7" />
+            </svg>
+            {/* Red Text for Khanh Hoa Salt */}
+            <span className="text-xl font-bold text-red-600">KHANH HOA SALT</span>
           </Link>
 
           {/* Hamburger Menu Button */}
@@ -86,7 +92,7 @@ const Navbar = () => {
                 )}
 
                 {link.hasDropdown && (
-                  <div className={`absolute left-0 top-full min-w-[200px] bg-[#ffeded] shadow-lg transform ${openDropdown === link.title ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'} transition-all duration-300`}>
+                  <div className={`absolute left-0 top-full min-w-[200px] bg-white shadow-lg transform ${openDropdown === link.title ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'} transition-all duration-300`}>
                     {link.dropdownItems?.map((item, i) => (
                       <Link key={i} to={item.path} className="block px-4 py-3 hover:bg-brand-red hover:text-white" onClick={() => setOpenDropdown(null)}>
                         {item.title}
@@ -115,7 +121,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-[#ffeded] absolute top-16 left-0 w-full py-2 shadow-lg z-50 animate-fade-in">
+          <div className="lg:hidden bg-white absolute top-16 left-0 w-full py-2 shadow-lg z-50 animate-fade-in">
             {navLinks.map((link, idx) => (
               <div key={idx} className="px-4">
                 {link.hasDropdown ? (
@@ -125,7 +131,7 @@ const Navbar = () => {
                       <ChevronDown size={16} className={`${openDropdown === link.title ? 'rotate-180' : ''} transform`} />
                     </button>
                     {openDropdown === link.title && (
-                      <div className="pl-4 bg-gray-900 animate-slide-in">
+                      <div className="pl-4 bg-white animate-slide-in">
                         {link.dropdownItems?.map((item, i) => (
                           <Link key={i} to={item.path} className="block py-3 border-b border-gray-800" onClick={() => setIsMenuOpen(false)}>
                             {item.title}
