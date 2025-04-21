@@ -29,9 +29,9 @@ const Hero = () => {
               </Link>
             </Button>
             <Button 
-              variant="outline" 
+              variant="default" 
               size="lg" 
-              className="border-white text-white bg-transparent hover:bg-white hover:text-brand-black"
+              className="bg-white text-black border-white hover:bg-gray-200 hover:text-black"
             >
               <Link to="/contact">
                 {t('nav.contact')}
