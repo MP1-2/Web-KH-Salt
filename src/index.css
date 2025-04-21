@@ -1,82 +1,93 @@
 
-/* Styles for a light, airy blue theme with nuanced palette */
+/* Styles for a clear, soft red and grey theme with nuanced palette */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 85% 97%; /* very light blue, almost white */
-    --foreground: 0 0% 7%;     /* near-black text */
-    --card: 210 100% 99%;      /* even lighter blue for cards */
-    --card-foreground: 225 44% 15%;
-    --primary: 213 65% 60%;    /* sky blue */
-    --primary-foreground: 0 0% 100%; /* white for text on blue */
-    --secondary: 210 85% 94%;
-    --secondary-foreground: 0 0% 0%;
-    --accent: 207 90% 66%;     /* accent/cta blue */
-    --accent-foreground: 0 0% 100%; 
-    --border: 210 30% 85%;
-    --input: 210 80% 98%;
-    --muted: 214 48% 93%;
-    --muted-foreground: 225 44% 30%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 0 100% 98%;         /* very light red-ish, almost white */
+    --foreground: 0 0% 7%;            /* near-black text */
+    --card: 0 100% 100%;              /* pure white for cards */
+    --card-foreground: 0 0% 10%;
+    --primary: 352 89% 58%;           /* main red */
+    --primary-foreground: 0 0% 100%;  /* white text on red */
+    --secondary: 0 100% 97%;          /* light red/pink */
+    --secondary-foreground: 0 0% 10%; /* dark text on secondary */
+    --accent: 0 85% 89%;              /* soft light red-pink */
+    --accent-foreground: 0 0% 7%;     /* black on accent */
+    --muted: 0 0% 93%;                /* light gray */
+    --muted-foreground: 0 0% 30%;
+    --destructive: 0 84.2% 60.2%;     /* strong red */
     --destructive-foreground: 0 0% 100%;
-    --ring: 211 100% 80%;
-    --radius: 0rem;
+    --border: 0 0% 85%;               /* light gray border */
+    --input: 0 0% 98%;                /* nearly white input */
+    --ring: 0 80% 80%;
+    --radius: 0.7rem;
   }
 
   body {
-    @apply bg-brand-sky text-brand-black antialiased;
+    @apply bg-[hsl(0_100%_98%)] text-black antialiased;
   }
 
   .section-container {
     @apply w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8;
   }
 
-  /* More nuanced blue for sections */
+  /* Hero background with very faint light red-pink gradient */
   .hero-bg {
-    background: linear-gradient(112deg, #ECF2FD 0%, #b9d8fa 100%);
+    background: linear-gradient(120deg, #fff4f6 0%, #fae0e3 90%);
   }
-  .blue-section {
-    background: linear-gradient(111deg, #d9e7fb 0%, #a9d3fa 100%);
+  .red-section {
+    background: linear-gradient(111deg, #fff4f6 30%, #f8d4da 100%);
     color: #111;
   }
-  .blue-accent {
-    background: linear-gradient(114deg, #1A237E 0%, #3978b7 100%);
+  .red-accent {
+    background: linear-gradient(114deg, #ea384c 0%, #ff868d 100%);
     color: #fff;
   }
 
   .heading-xl, .heading-lg, .heading-md, .heading-sm {
-    color: #111 !important;
+    color: #ea384c !important; /* Strong red for headings */
   }
   .text-body, .text-body-sm {
     color: #222 !important;
   }
   .text-brand-red {
-    color: #FF0023 !important;
+    color: #ea384c !important;
   }
 
   .card, .card-hover {
     background: #fff !important;
     border-radius: 1rem !important;
-    box-shadow: 0 4px 24px 0 rgba(104,176,255,0.06);
+    box-shadow: 0 4px 24px 0 rgba(234,56,76,0.07);
   }
-  /* Button/new accent styles */
-  .btn-blue {
-    @apply bg-[--primary] text-white hover:bg-brand-red;
+
+  /* Buttons/accent styles */
+  .btn-red {
+    @apply bg-[#ea384c] text-white hover:bg-[#d32a3b];
   }
-  .btn-outline {
-    @apply border-brand-red text-brand-red hover:bg-brand-red hover:text-white;
+  .btn-outline-red {
+    @apply border-[#ea384c] text-[#ea384c] hover:bg-[#ea384c] hover:text-white;
   }
-  /* Set input fields etc */
+
+  /* Inputs/fields */
   input, textarea {
-    background: #f8fafc;
+    background: #fafafb;
     color: #111;
   }
-  /* Footer brighter */
-  footer.bg-brand-black, .bg-brand-black, .navbar-bg {
-    background: #3978b7 !important;
+
+  /* Footer heavy red */
+  footer.bg-brand-red, .bg-brand-red, .navbar-bg {
+    background: #ea384c !important;
     color: #fff !important;
+  }
+
+  /* General backgrounds and sectioning */
+  .bg-red-light {
+    background: #fff4f6 !important;
+  }
+  .bg-grey-light {
+    background: #f1f1f1 !important;
   }
 }
