@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Users, Globe, Award, Briefcase } from "lucide-react";
+import BackButton from "@/components/common/BackButton";
 import { Button } from "@/components/ui/button";
 
 const stats = [
@@ -21,30 +22,31 @@ const AboutUs = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="min-h-[80vh] px-5 py-8 md:py-12 max-w-5xl mx-auto flex flex-col gap-12">
-      <header className="mb-4">
+    <section className="max-w-5xl mx-auto px-5 py-10 min-h-[80vh] flex flex-col gap-10">
+      <BackButton to="/" label="Back to Home" />
+      <header className="mb-2">
         <h1 className="heading-lg text-brand-red mb-2">About Us</h1>
         <nav className="text-sm flex gap-4 mb-2">
           <a href="#history" className="text-brand-red underline-offset-4 hover:underline">Our History</a>
           <a href="#values" className="text-brand-red underline-offset-4 hover:underline">Our Values</a>
         </nav>
       </header>
-
-      <div id="history" className="flex flex-col md:flex-row gap-8">
-        {/* Images Gallery Left */}
-        <div className="flex-1 flex flex-col gap-4">
+      {/* Responsive Gallery & Text */}
+      <div id="history" className="flex flex-col md:flex-row gap-8 animate-fade-in">
+        {/* Image Gallery */}
+        <div className="flex-1 flex flex-col gap-4 md:max-w-[320px]">
           <div className="flex gap-2 md:gap-4">
             <div className="w-1/2">
-              <img src={images[0].src} alt={images[0].alt} className="rounded-lg w-full h-auto object-cover" style={{maxHeight: 250}} />
-              <div className="italic text-xs mt-1 text-center">{images[0].caption}</div>
+              <img src={images[0].src} alt={images[0].alt} className="rounded-lg w-full h-auto object-cover shadow" style={{maxHeight: 220}} />
+              <div className="italic text-xs mt-1 text-center text-gray-500">{images[0].caption}</div>
             </div>
             <div className="w-1/2 flex flex-col gap-2">
-              <img src={images[1].src} alt={images[1].alt} className="rounded-lg w-full h-auto object-cover" style={{maxHeight: 110}} />
-              <img src={images[2].src} alt={images[2].alt} className="rounded-lg w-full h-auto object-cover" style={{maxHeight: 110}} />
+              <img src={images[1].src} alt={images[1].alt} className="rounded-lg w-full h-auto object-cover shadow" style={{maxHeight: 100}} />
+              <img src={images[2].src} alt={images[2].alt} className="rounded-lg w-full h-auto object-cover shadow" style={{maxHeight: 100}} />
             </div>
           </div>
         </div>
-        {/* Text Right */}
+        {/* History Content */}
         <div className="flex-[2] flex flex-col gap-3 text-body">
           <h2 className="heading-md text-brand-red mb-1">Our History</h2>
           <p>
@@ -58,9 +60,8 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
-
-      {/* Key Stats Box */}
-      <div className="bg-black rounded-xl flex flex-wrap justify-between items-center gap-5 p-6 md:p-8" style={{borderRadius: 16}}>
+      {/* Stats Box */}
+      <div className="bg-black rounded-xl flex flex-wrap justify-between items-center gap-5 p-6 md:p-8 shadow-md" style={{borderRadius: 16}}>
         {stats.map((stat, idx) => (
           <div key={stat.label} className="flex flex-col items-center flex-1 min-w-[120px]">
             <stat.icon className="text-brand-red mb-1" size={32} />
@@ -69,7 +70,7 @@ const AboutUs = () => {
           </div>
         ))}
       </div>
-
+      {/* Values Section */}
       <div id="values" className="flex flex-col gap-2 mt-2">
         <h2 className="heading-md text-brand-red mb-1">Our Values</h2>
         <p>
@@ -79,8 +80,7 @@ const AboutUs = () => {
           Our reputation is built on trust and product purity, and we continue to set the benchmark for excellence in the salt industry in Vietnam and across Asia.
         </p>
       </div>
-
-      {/* CTA */}
+      {/* Call-to-action */}
       <div>
         <Button className="mt-4 bg-brand-red text-white px-6 py-3 text-lg rounded-lg hover:scale-105 transition-transform" onClick={() => navigate('/contact')}>
           Contact Us

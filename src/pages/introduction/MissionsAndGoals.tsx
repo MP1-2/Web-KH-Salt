@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Globe, Award, Briefcase, Leaf } from "lucide-react";
+import BackButton from "@/components/common/BackButton";
 
 const missions = [
   {
@@ -31,7 +32,8 @@ const missions = [
 
 const MissionsAndGoals = () => {
   return (
-    <section className="max-w-5xl mx-auto px-5 py-10 min-h-[70vh]">
+    <section className="max-w-5xl mx-auto px-5 py-10 min-h-[70vh] flex flex-col gap-8">
+      <BackButton to="/" label="Back to Home" />
       <h1 className="heading-lg text-brand-red mb-6">Our Missions &amp; Goals</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {missions.map((m, i) => (

@@ -1,5 +1,6 @@
 
 import React from "react";
+import BackButton from "@/components/common/BackButton";
 
 const partners = [
   {
@@ -48,7 +49,8 @@ const partners = [
 
 const Partners = () => {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10 min-h-[70vh] bg-black rounded-xl">
+    <section className="max-w-6xl mx-auto px-4 py-10 min-h-[70vh] bg-black rounded-xl flex flex-col gap-8">
+      <BackButton to="/" label="Back to Home" />
       <h1 className="heading-lg text-brand-red mb-8">Partners</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {partners.map((p) => (

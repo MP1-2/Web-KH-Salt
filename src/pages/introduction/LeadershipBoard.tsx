@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Linkedin } from "lucide-react";
+import BackButton from "@/components/common/BackButton";
 
 const leaders = [
   {
@@ -39,14 +40,15 @@ const leaders = [
 
 const LeadershipBoard = () => {
   return (
-    <section className="max-w-5xl mx-auto px-4 py-10 min-h-[70vh]">
+    <section className="max-w-5xl mx-auto px-4 py-10 min-h-[70vh] flex flex-col gap-8">
+      <BackButton to="/" label="Back to Home" />
       <h1 className="heading-lg text-brand-red mb-8">Leadership Board</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {leaders.map((leader, idx) => (
           <div
             key={leader.name}
             className="rounded-lg bg-black text-white shadow transition-all duration-200 p-6 flex flex-col items-center hover:shadow-[0_8px_16px_0_rgba(234,56,76,0.5)] hover:-translate-y-1"
-            style={{ borderRadius: 8 }}
+            style={{ borderRadius: 8, minHeight: 420 }}
           >
             <img
               src={leader.img}
