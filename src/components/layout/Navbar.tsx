@@ -23,15 +23,9 @@ const Navbar = () => {
   };
 
   const navLinks = [
+    { title: t('nav.home'), path: '/', hasDropdown: false },
     {
-      title: t('nav.home'),
-      path: '/',
-      hasDropdown: false
-    },
-    {
-      title: t('nav.introduction'),
-      path: '/introduction',
-      hasDropdown: true,
+      title: t('nav.introduction'), path: '/introduction', hasDropdown: true,
       dropdownItems: [
         { title: t('intro.about'), path: '/introduction/about' },
         { title: t('intro.mission'), path: '/introduction/missions' },
@@ -40,41 +34,41 @@ const Navbar = () => {
       ]
     },
     {
-      title: t('nav.products'),
-      path: '/products',
-      hasDropdown: true,
+      title: t('nav.products'), path: '/products', hasDropdown: true,
       dropdownItems: [
         { title: t('products.product1'), path: '/products/industrial-salt' },
         { title: t('products.product2'), path: '/products/table-salt' },
         { title: t('products.product3'), path: '/products/specialty-salt' }
       ]
     },
+    { title: t('nav.career'), path: '/career', hasDropdown: false },
     {
-      title: t('nav.career'),
-      path: '/career',
-      hasDropdown: false
-    },
-    {
-      title: t('nav.news'),
-      path: '/news',
-      hasDropdown: true,
+      title: t('nav.news'), path: '/news', hasDropdown: true,
       dropdownItems: [
         { title: t('news.internal'), path: '/news/internal' },
         { title: t('news.market'), path: '/news/market' },
         { title: t('news.csr'), path: '/news/csr' }
       ]
     },
-    {
-      title: t('nav.contact'),
-      path: '/contact',
-      hasDropdown: false
-    },
-    {
-      title: t('nav.distribution'),
-      path: '/distribution',
-      hasDropdown: false
-    }
+    { title: t('nav.contact'), path: '/contact', hasDropdown: false },
+    { title: t('nav.distribution'), path: '/distribution', hasDropdown: false }
   ];
+
+  const renderLangButtonContent = () => (
+    <span className="inline-flex items-center space-x-1">
+      {language === 'en' ? (
+        <>
+          <span role="img" aria-label="Vietnamese flag">🇻🇳</span>
+          <span>VN</span>
+        </>
+      ) : (
+        <>
+          <span role="img" aria-label="UK flag">🇬🇧</span>
+          <span>EN</span>
+        </>
+      )}
+    </span>
+  );
 
   return (
     <header className="fixed top-0 left-0 w-full bg-brand-black text-white z-50">
@@ -97,9 +91,7 @@ const Navbar = () => {
                     <ChevronDown size={16} />
                   </button>
                 ) : (
-                  <Link to={link.path} className="py-2">
-                    {link.title}
-                  </Link>
+                  <Link to={link.path} className="py-2">{link.title}</Link>
                 )}
 
                 {link.hasDropdown && (
@@ -119,18 +111,14 @@ const Navbar = () => {
               </div>
             ))}
 
-            {/* Language Toggle with Flags */}
+            {/* Language Toggle */}
             <Button
               onClick={handleLanguageToggle}
               variant="outline"
-              className="ml-4 border-white text-white hover:bg-brand-red"
+              className="ml-4 border-white text-white hover:bg-brand-red inline-flex items-center"
               size="sm"
             >
-              {language === 'en' ? (
-                <span role="img" aria-label="Vietnamese flag" className="text-xl">🇻🇳</span>
-              ) : (
-                <span role="img" aria-label="English flag" className="text-xl">🇬🇧</span>
-              )}
+              {renderLangButtonContent()}
             </Button>
           </div>
 
@@ -146,7 +134,7 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <div key={index} className="px-4">
                 {link.hasDropdown ? (
-                  <> 
+                  <>
                     <button
                       onClick={() => toggleDropdown(link.title)}
                       className="flex items-center justify-between w-full py-3 border-b border-gray-700"
@@ -178,29 +166,4 @@ const Navbar = () => {
                     {link.title}
                   </Link>
                 )}
-              </div>
-            ))}
-            <div className="px-4 py-4">
-              <Button
-                onClick={() => {
-                  handleLanguageToggle();
-                  setIsMenuOpen(false);
-                }}
-                variant="outline"
-                className="w-full border-white text-white hover:bg-brand-red"
-              >
-                {language === 'en' ? (
-                  <span role="img" aria-label="Vietnamese flag" className="text-xl">🇻🇳</span>
-                ) : (
-                  <span role="img" aria-label="English flag" className="text-xl">🇬🇧</span>
-                )}
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
-    </header>
-  );
-};
-
-export default Navbar;
+              <
