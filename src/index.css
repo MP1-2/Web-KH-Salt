@@ -1,106 +1,101 @@
-
-/* Styles for a clear, soft red and grey theme with nuanced palette */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 98%;         /* very light gray, almost white */
-    --foreground: 0 0% 7%;          /* near-black text */
-    --card: 0 100% 100%;            /* pure white for cards */
-    --card-foreground: 0 0% 10%;
-    --primary: 352 89% 58%;         /* main red */
-    --primary-foreground: 0 0% 100%;/* white text on red */
-    --secondary: 0 100% 97%;        /* light red/pink */
-    --secondary-foreground: 0 0% 10%; /* dark text on secondary */
-    --accent: 0 85% 89%;            /* soft light red-pink */
-    --accent-foreground: 0 0% 7%;   /* black on accent */
-    --muted: 0 0% 93%;              /* light gray */
-    --muted-foreground: 0 0% 30%;
-    --destructive: 0 84.2% 60.2%;   /* strong red */
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 85%;             /* light gray border */
-    --input: 0 0% 98%;              /* nearly white input */
-    --ring: 0 80% 80%;
-    --radius: 0rem;                 /* all radii set to 0 */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
 
   body {
-    @apply bg-[hsl(var(--background))] text-black antialiased;
-  }
-
-  .section-container {
-    @apply w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8;
-  }
-
-  /* Hero background with very faint light red-pink gradient */
-  .hero-bg {
-    background: linear-gradient(120deg, #fff4f6 0%, #fae0e3 90%);
-  }
-
-  /* Replace blue section backgrounds with light grey */
-  .blue-section {
-    background: #f3f3f3 !important; /* soft light gray */
-    color: #111 !important;
-  }
-
-  /* Replace red-section with very subtle light red or light gray to reduce red background */
-  .red-section {
-    background: #faf5f5 !important; /* very pale red/pink */
-    color: #111 !important;
-  }
-
-  .red-accent {
-    background: linear-gradient(114deg, #ea384c 0%, #ff868d 100%);
-    color: #fff;
-  }
-
-  .heading-xl, .heading-lg, .heading-md, .heading-sm {
-    color: #ea384c !important; /* Strong red for headings */
-  }
-  .text-body, .text-body-sm {
-    color: #222 !important;
-  }
-  .text-brand-red {
-    color: #ea384c !important;
-  }
-
-  .card, .card-hover {
-    background: #fff !important;
-    border-radius: 0 !important;
-    box-shadow: 0 4px 24px 0 rgba(234,56,76,0.07);
-  }
-
-  /* Buttons/accent styles */
-  .btn-red {
-    @apply bg-[#ea384c] text-white hover:bg-[#d32a3b];
-    border-radius: 0;
-  }
-  .btn-outline-red {
-    @apply border-[#ea384c] text-[#ea384c] hover:bg-[#ea384c] hover:text-white;
-    border-radius: 0;
-  }
-
-  /* Inputs/fields */
-  input, textarea {
-    background: #fafafb;
-    color: #111;
-    border-radius: 0;
-  }
-
-  /* Footer black or dark grey */
-  footer.bg-brand-red, .bg-brand-red, .navbar-bg {
-    background: #222222 !important; /* dark grey */
-    color: #fff !important;
-    border-radius: 0 !important;
-  }
-
-  /* General backgrounds and sectioning */
-  .bg-red-light {
-    background: #fff4f6 !important; /* keep but only used minimally */
-  }
-  .bg-grey-light {
-    background: #f3f3f3 !important; /* neutral light gray */
+    @apply bg-background text-foreground;
   }
 }
