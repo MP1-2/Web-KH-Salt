@@ -34,11 +34,11 @@ const ProductsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 blue-section">
       <div className="section-container">
         <div className="text-center mb-12">
-          <h2 className="heading-lg mb-4">
-            <span className="text-brand-red">{t('home.products.title')}</span>
+          <h2 className="heading-lg mb-4 text-brand-red">
+            {t('home.products.title')}
           </h2>
           <p className="text-body max-w-2xl mx-auto">
             Discover our diverse range of salt products, crafted with precision and care to meet various consumer and industrial needs.

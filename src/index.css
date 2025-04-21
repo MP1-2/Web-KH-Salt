@@ -1,146 +1,82 @@
 
+/* Styles for a light, airy blue theme with nuanced palette */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 225 44% 95%; /* Light navy blue background */
-    --foreground: 0 0% 0%;     /* Pure black text */
-    --card: 0 0% 100%;         /* White cards */
-    --card-foreground: 0 0% 0%;/* Black text for cards */
-    --popover: 225 44% 95%;
-    --popover-foreground: 0 0% 0%;
-    --primary: 226 73% 26%;    /* Navy blue ~ #1A237E */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 225 44% 99%;  /* Brighter cool gray/blue */
+    --background: 210 85% 97%; /* very light blue, almost white */
+    --foreground: 0 0% 7%;     /* near-black text */
+    --card: 210 100% 99%;      /* even lighter blue for cards */
+    --card-foreground: 225 44% 15%;
+    --primary: 213 65% 60%;    /* sky blue */
+    --primary-foreground: 0 0% 100%; /* white for text on blue */
+    --secondary: 210 85% 94%;
     --secondary-foreground: 0 0% 0%;
-    --muted: 225 44% 97%;
-    --muted-foreground: 0 0% 0%;
-    --accent: 225 44% 93%;     /* Subtle accent blue */
-    --accent-foreground: 356 100% 52%;
+    --accent: 207 90% 66%;     /* accent/cta blue */
+    --accent-foreground: 0 0% 100%; 
+    --border: 210 30% 85%;
+    --input: 210 80% 98%;
+    --muted: 214 48% 93%;
+    --muted-foreground: 225 44% 30%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 225 24% 84%;
-    --input: 225 44% 96%;
-    --ring: 356 91% 46%;
+    --ring: 211 100% 80%;
     --radius: 0rem;
   }
 
-  * {
-    @apply border-border;
-    scroll-behavior: smooth;
-  }
-
   body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-brand-sky text-brand-black antialiased;
   }
 
   .section-container {
     @apply w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8;
   }
 
-  .heading-xl {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black;
+  /* More nuanced blue for sections */
+  .hero-bg {
+    background: linear-gradient(112deg, #ECF2FD 0%, #b9d8fa 100%);
+  }
+  .blue-section {
+    background: linear-gradient(111deg, #d9e7fb 0%, #a9d3fa 100%);
+    color: #111;
+  }
+  .blue-accent {
+    background: linear-gradient(114deg, #1A237E 0%, #3978b7 100%);
+    color: #fff;
   }
 
-  .heading-lg {
-    @apply text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black;
+  .heading-xl, .heading-lg, .heading-md, .heading-sm {
+    color: #111 !important;
+  }
+  .text-body, .text-body-sm {
+    color: #222 !important;
+  }
+  .text-brand-red {
+    color: #FF0023 !important;
   }
 
-  .heading-md {
-    @apply text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-black;
-  }
-
-  .heading-sm {
-    @apply text-lg md:text-xl lg:text-2xl font-semibold tracking-tight text-black;
-  }
-
-  .text-body {
-    @apply text-base leading-7 text-black;
-  }
-
-  .text-body-sm {
-    @apply text-sm leading-6 text-black;
-  }
-
-  .red-bg-section {
-    @apply bg-brand-red text-white py-12 px-4 shadow-md; /* No rounded */
-  }
-
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-4 uppercase tracking-wider text-black;
-  }
-
-  .section-title-red {
-    @apply text-brand-red;
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
-  }
-
-  .btn-red {
-    @apply bg-brand-red hover:bg-red-700 text-white font-semibold;
-  }
-
-  .section-divider {
-    @apply w-20 h-1 bg-brand-red mx-auto my-4;
-  }
-
-  .glass {
-    @apply bg-white/70 backdrop-blur-lg border border-white/30 shadow-lg;
-  }
-
-  .card-gradient {
-    background: linear-gradient(111.4deg, #E8ECFC 1%, #FFF6F6 58%);
-  }
-
-  .bg-brand-black, .bg-black {
-    background: #1A237E !important; /* Navy blue */
-    color: #000 !important;
-  }
-
-  header, .navbar-bg {
-    background: #1A237E !important;
-    color: #000 !important;
-    border-bottom: 1px solid #d2d7e6;
-    box-shadow: 0 1px 18px 0 #ededed33;
-  }
-
-  button[class*="btn"][class*="outline"] {
-    color: #000 !important;
-    border-color: #000 !important;
-    background-color: #fff !important;
-  }
-  button[class*="btn"][class*="outline"]:hover {
-    background-color: #ff0023 !important;
-    color: #fff !important;
-    border-color: #ff0023 !important;
-  }
-
-  footer a {
-    color: #000 !important;
-  }
-  footer a:hover {
-    color: #ff0023 !important;
-  }
-  footer,
-  footer ul,
-  footer li,
-  footer p {
-    color: #000 !important;
-  }
-
-  .hero-text, .hero-text * {
-    color: #000 !important;
-  }
-
-  .rounded, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-full {
-    border-radius: 0 !important;
-  }
   .card, .card-hover {
-    border-radius: 0 !important;
+    background: #fff !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 4px 24px 0 rgba(104,176,255,0.06);
+  }
+  /* Button/new accent styles */
+  .btn-blue {
+    @apply bg-[--primary] text-white hover:bg-brand-red;
+  }
+  .btn-outline {
+    @apply border-brand-red text-brand-red hover:bg-brand-red hover:text-white;
+  }
+  /* Set input fields etc */
+  input, textarea {
+    background: #f8fafc;
+    color: #111;
+  }
+  /* Footer brighter */
+  footer.bg-brand-black, .bg-brand-black, .navbar-bg {
+    background: #3978b7 !important;
+    color: #fff !important;
   }
 }

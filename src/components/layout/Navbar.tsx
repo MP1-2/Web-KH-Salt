@@ -1,19 +1,48 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
-// Both flag icons, always shown for language toggle
+// Use SVG country flags for language selector
+const FlagIcon = ({ country }: { country: 'en' | 'vi' }) => {
+  if (country === 'en') {
+    // UK flag (SVG, optimized)
+    return (
+      <svg width="24" height="18" viewBox="0 0 24 18">
+        <rect width="24" height="18" rx="2" fill="#fff" />
+        <rect width="24" height="2.8" y="7.6" fill="#00247d" />
+        <rect width="2.8" height="18" x="10.6" fill="#00247d" />
+        <polygon points="0,0 24,18 24,15 3,0" fill="#00247d"/>
+        <polygon points="24,0 0,18 0,15 21,0" fill="#00247d"/>
+        <polygon points="0,15 7,9.7 8.7,11.8 1.7,16.6" fill="#cf142b"/>
+        <polygon points="24,15 17,9.7 15.3,11.8 22.3,16.6" fill="#cf142b"/>
+        <polygon points="0,3 7,8.3 8.7,6.2 1.7,1.4" fill="#cf142b"/>
+        <polygon points="24,3 17,8.3 15.3,6.2 22.3,1.4" fill="#cf142b"/>
+      </svg>
+    );
+  }
+  // Vietnam flag (SVG, optimized)
+  return (
+    <svg width="24" height="18" viewBox="0 0 24 18">
+      <rect width="24" height="18" rx="2" fill="#DA251D" />
+      <polygon
+        points="12,4 13.09,7.74 17,7.74 13.96,9.63 15.05,13.37 12,11.48 8.95,13.37 10.04,9.63 7,7.74 10.91,7.74"
+        fill="#FFE156"
+      />
+    </svg>
+  );
+};
+
+// Language flags row for the toggle
 const LanguageFlags = ({ language }: { language: 'en' | 'vi' }) => (
-  <span className="inline-flex items-center gap-1 text-2xl">
-    <span className={language === "en" ? "opacity-100" : "opacity-40"}>
-      🇬🇧
+  <span className="inline-flex items-center gap-2">
+    <span className={language === "en" ? "" : "opacity-40"}>
+      <FlagIcon country="en" />
     </span>
-    <span className="mx-1 text-lg text-[#222] font-semibold select-none">/</span>
-    <span className={language === "vi" ? "opacity-100" : "opacity-40"}>
-      🇻🇳
+    <span className="font-bold text-lg mx-1 select-none">/</span>
+    <span className={language === "vi" ? "" : "opacity-40"}>
+      <FlagIcon country="vi" />
     </span>
   </span>
 );
@@ -75,10 +104,10 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#1A237E] text-black border-b border-gray-200 z-50 transition-all">
+    <header className="fixed top-0 left-0 w-full navbar-bg border-b border-brand-accent z-50 transition-all">
       <div className="section-container">
         <nav className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold flex items-center text-brand-red tracking-wide uppercase">
+          <Link to="/" className="text-2xl font-extrabold flex items-center text-brand-red tracking-wide uppercase">
             KHANH HOA SALT
           </Link>
           {/* Desktop Navigation */}
@@ -117,7 +146,7 @@ const Navbar = () => {
             <Button
               onClick={handleLanguageToggle}
               variant="outline"
-              className="ml-6 border-2 border-brand-red bg-white py-2 px-4 hover:bg-brand-red/90 hover:text-white transition-colors font-bold shadow-lg"
+              className="ml-6 border-brand-red bg-white py-2 px-4 hover:bg-brand-red/90 hover:text-white transition-colors font-bold shadow-lg"
               size="sm"
               aria-label="Toggle language"
             >
@@ -125,7 +154,7 @@ const Navbar = () => {
             </Button>
           </div>
           {/* Mobile Menu Toggle */}
-          <button className="lg:hidden p-2 text-black" onClick={toggleMenu}>
+          <button className="lg:hidden p-2 text-brand-accent" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
@@ -176,7 +205,7 @@ const Navbar = () => {
                   setIsMenuOpen(false);
                 }}
                 variant="outline"
-                className="w-max border-2 border-brand-red bg-white py-2 px-5 font-bold shadow-lg text-black hover:bg-brand-red/90 hover:text-white"
+                className="w-max border-brand-red bg-white py-2 px-5 font-bold shadow-lg"
                 aria-label="Toggle language"
               >
                 <LanguageFlags language={language} />

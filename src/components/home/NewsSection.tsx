@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -50,12 +49,12 @@ const NewsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 blue-section">
       <div className="section-container">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div>
-            <h2 className="heading-lg mb-2">
-              <span className="text-brand-red">{t('home.news.title')}</span>
+            <h2 className="heading-lg mb-2 text-brand-red">
+              {t('home.news.title')}
             </h2>
             <p className="text-body max-w-2xl">
               Stay updated with the latest news and developments from Khanh Hoa Salt.

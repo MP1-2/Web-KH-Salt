@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -9,12 +8,12 @@ const AboutSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 blue-section">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
-            <h2 className="heading-lg mb-6">
-              <span className="text-brand-red">{t('home.about.title')}</span>
+            <h2 className="heading-lg mb-6 text-brand-red">
+              {t('home.about.title')}
             </h2>
             <p className="text-body mb-6">
               {t('home.about.desc')}
@@ -35,7 +34,7 @@ const AboutSection = () => {
               <img 
                 src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80" 
                 alt="Salt production" 
-                className="w-full h-[400px] md:h-[500px] object-cover"
+                className="w-full h-[400px] md:h-[500px] object-cover rounded-lg"
               />
             </div>
           </div>
