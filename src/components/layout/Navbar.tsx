@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
@@ -120,13 +119,18 @@ const Navbar = () => {
               </div>
             ))}
 
+            {/* Language Toggle with Flags */}
             <Button
               onClick={handleLanguageToggle}
               variant="outline"
               className="ml-4 border-white text-white hover:bg-brand-red"
               size="sm"
             >
-              {language === 'en' ? 'VI' : 'EN'}
+              {language === 'en' ? (
+                <span role="img" aria-label="Vietnamese flag" className="text-xl">🇻🇳</span>
+              ) : (
+                <span role="img" aria-label="English flag" className="text-xl">🇬🇧</span>
+              )}
             </Button>
           </div>
 
@@ -142,7 +146,7 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <div key={index} className="px-4">
                 {link.hasDropdown ? (
-                  <>
+                  <> 
                     <button
                       onClick={() => toggleDropdown(link.title)}
                       className="flex items-center justify-between w-full py-3 border-b border-gray-700"
@@ -185,7 +189,11 @@ const Navbar = () => {
                 variant="outline"
                 className="w-full border-white text-white hover:bg-brand-red"
               >
-                {language === 'en' ? 'Switch to Vietnamese' : 'Switch to English'}
+                {language === 'en' ? (
+                  <span role="img" aria-label="Vietnamese flag" className="text-xl">🇻🇳</span>
+                ) : (
+                  <span role="img" aria-label="English flag" className="text-xl">🇬🇧</span>
+                )}
               </Button>
             </div>
           </div>
