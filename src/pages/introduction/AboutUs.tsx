@@ -1,14 +1,14 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { users, globe, award, briefcase } from "lucide-react";
+import { Users, Globe, Award, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { label: "Years in Business", value: "20+", icon: briefcase },
-  { label: "Employees", value: "500+", icon: users },
-  { label: "Countries Exported", value: "30+", icon: globe },
-  { label: "Industry Awards", value: "12", icon: award },
+  { label: "Years in Business", value: "20+", icon: Briefcase },
+  { label: "Employees", value: "500+", icon: Users },
+  { label: "Countries Exported", value: "30+", icon: Globe },
+  { label: "Industry Awards", value: "12", icon: Award },
 ];
 
 const images = [
@@ -48,10 +48,10 @@ const AboutUs = () => {
         <div className="flex-[2] flex flex-col gap-3 text-body">
           <h2 className="heading-md text-brand-red mb-1">Our History</h2>
           <p>
-            Founded more than two decades ago in the sun-baked heart of Khanh Hoa province, our company has grown from a modest salt cooperative into one of Vietnam’s most innovative and respected salt producers. From the very beginning, our vision has been anchored in blending traditional Vietnamese salt-harvesting methods with modern production technologies. 
+            Founded more than two decades ago in the sun-baked heart of Khanh Hoa province, our company has grown from a modest salt cooperative into one of Vietnam's most innovative and respected salt producers. From the very beginning, our vision has been anchored in blending traditional Vietnamese salt-harvesting methods with modern production technologies. 
           </p>
           <p>
-            Through years of dedication, adaptability, and investment in human capital, we’ve reached significant milestones: the expansion of our production facility in 2008, the launch of our export division in 2013, and winning the prestigious National Quality Award in 2022. 
+            Through years of dedication, adaptability, and investment in human capital, we've reached significant milestones: the expansion of our production facility in 2008, the launch of our export division in 2013, and winning the prestigious National Quality Award in 2022. 
           </p>
           <p>
             Today, our current operations span the entire supply chain, integrating sustainable harvesting, advanced purification, and rigorous quality assurance. Our salt products reach kitchens, factories, and markets in over 30 countries, but our roots and values remain firmly in Vietnam.
