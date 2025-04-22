@@ -1,7 +1,7 @@
 import React from "react";
 import BackButton from "@/components/common/BackButton";
 import { Card } from "@/components/ui/card";
-import Layout from "@/components/layout/Layout"; // Import the Layout component
+import Layout from "@/components/layout/Layout";
 
 const partners = [
   {
@@ -50,34 +50,40 @@ const partners = [
 
 const Partners = () => {
   return (
-    <Layout> {/* Wrap the content with Layout */}
-      <section className="section-container py-20 min-h-[70vh] flex flex-col gap-8 px-4 sm:px-6 lg:px-8"> {/* Adjusted py-14 to py-20 and added responsive padding */}
-        <BackButton to="/" label="Back to Home" />
-        <h1 className="heading-lg text-brand-red mb-4 text-center">Partners</h1>
-        <p className="text-body max-w-2xl mx-auto text-center mb-7">We proudly collaborate with industry-leading partners who help deliver Khanh Hoa Salt products and values to every region and continent.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">
-          {partners.map((p) => (
-            <Card
-              key={p.name}
-              className="flex flex-col items-center bg-white/90 rounded-xl p-6 hover:border-brand-red border-transparent border shadow-lg transition-all duration-200 animate-fade-in"
-            >
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center w-full mb-2"
+    <Layout>
+      <section className="w-full flex flex-col items-center min-h-[70vh] bg-white pt-20 pb-16"> {/* Updated to match AboutUs structure */}
+        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8"> {/* Added to match AboutUs */}
+          <BackButton to="/" label="Back to Home" /> {/* Moved here to match AboutUs positioning */}
+          <h1 className="heading-lg text-brand-red mb-4 text-center">Partners</h1>
+          <p className="text-body max-w-2xl mx-auto text-center mb-7">
+            We proudly collaborate with industry-leading partners who help deliver Khanh Hoa Salt products and values to every region and continent.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">
+            {partners.map((p) => (
+              <Card
+                key={p.name}
+                className="flex flex-col items-center bg-white/90 rounded-xl p-6 hover:border-brand-red border-transparent border shadow-lg transition-all duration-200 animate-fade-in"
               >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  className="mb-2 grayscale group-hover:grayscale-0 group-hover:border-brand-red border transition-all duration-200"
-                  style={{ width: 140, height: 60, objectFit: "contain" }}
-                />
-              </a>
-              <div className="font-bold text-brand-red mb-1 text-center">{p.name}</div>
-              <div className="text-gray-700 text-sm text-center" style={{ fontSize: 14 }}>{p.description}</div>
-            </Card>
-          ))}
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center w-full mb-2"
+                >
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    className="mb-2 grayscale group-hover:grayscale-0 group-hover:border-brand-red border transition-all duration-200"
+                    style={{ width: 140, height: 60, objectFit: "contain" }}
+                  />
+                </a>
+                <div className="font-bold text-brand-red mb-1 text-center">{p.name}</div>
+                <div className="text-gray-700 text-sm text-center" style={{ fontSize: 14 }}>
+                  {p.description}
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
     </Layout>
