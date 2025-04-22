@@ -1,6 +1,5 @@
 
 import React from "react";
-import Layout from '@/components/layout/Layout';
 import { useNavigate } from "react-router-dom";
 import { Users, Globe, Award, Briefcase } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
