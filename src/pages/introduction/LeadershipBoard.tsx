@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Linkedin } from "lucide-react";
 import Layout from "@/components/layout/Layout";
@@ -17,7 +16,7 @@ const leaders = [
   {
     name: "Nguyen Thi Hoa",
     title: "Chief Financial Officer",
-    img: "/placeholder.svg",
+    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
     bio:
       "Ms. Hoa's sharp financial leadership secures international trade for the company. Her work in financial planning and risk management keeps operations robust and future-ready.",
     linkedin: "#",
@@ -43,9 +42,9 @@ const leaders = [
 const LeadershipBoard = () => {
   return (
     <Layout>
-      <section className="w-full py-10 bg-white">
-        <div className="section-container max-w-6xl mx-auto">
-          <BackButton to="/introduction" label="Back to Introduction" />
+      <section className="w-full flex flex-col items-center pt-20 pb-16 bg-white"> {/* Updated py-10 to pt-20 pb-16 */}
+        <div className="section-container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BackButton to="/" label="Back to Home" /> {/* Replaced with Partners' BackButton props */}
           
           {/* Hero Title with Red Background Banner */}
           <div className="bg-brand-red text-white py-6 px-8 mb-10 rounded-lg shadow-md">
