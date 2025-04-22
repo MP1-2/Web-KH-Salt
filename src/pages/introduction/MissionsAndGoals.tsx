@@ -1,8 +1,8 @@
-
 import React from "react";
 import { Globe, Award, Briefcase, Leaf } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
 import { Card } from "@/components/ui/card";
+import Layout from "@/components/layout/Layout"; // Import the Layout component
 
 const missions = [
   {
@@ -56,50 +56,52 @@ const goals = [
 
 const MissionsAndGoals = () => {
   return (
-    <section className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-6 pb-16">
-      <div className="section-container w-full max-w-6xl">
-        <BackButton to="/introduction" label="Back to Introduction" />
+    <Layout> {/* Wrap the content with Layout */}
+      <section className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-20 pb-16"> {/* Adjusted pt-6 to pt-20 */}
+        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8"> {/* Added responsive padding */}
+          <BackButton to="/introduction" label="Back to Introduction" />
 
-        {/* Title */}
-        <div className="text-center mb-8">
-          <h1 className="heading-lg text-brand-red mb-2 tracking-wider" style={{ letterSpacing: '1.5px' }}>
-            OUR <span className="text-black">MISSION</span>
-          </h1>
-          <div className="mx-auto w-20 h-1 bg-brand-red rounded-full mb-2"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Setting new standards in salt—globally recognized for quality and community impact.
-          </p>
-        </div>
-        {/* Mission Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
-          {missions.map((m, i) => (
-            <Card
-              key={i}
-              className="rounded-xl p-7 flex flex-col items-center border border-gray-100 shadow bg-white hover:shadow-md transition-all min-h-[260px]"
-            >
-              <div className="mb-2">{m.icon}</div>
-              <h2 className="text-lg font-bold text-brand-red mb-2 text-center">{m.title}</h2>
-              <p className="text-gray-700 text-center">{m.desc}</p>
-            </Card>
-          ))}
-        </div>
-        {/* Goals Stats */}
-        <div className="mb-4">
-          <h2 className="text-xl font-bold text-brand-red mb-1 text-center">
-            Company at a Glance
-          </h2>
-          <div className="mx-auto w-12 h-1 bg-brand-red rounded mb-4"></div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {goals.map((goal) => (
-              <Card key={goal.label} className="bg-[#fff] text-center p-7 shadow-md border border-gray-100 rounded-xl">
-                <div className={`text-4xl font-extrabold mb-1 ${goal.color}`}>{goal.value}</div>
-                <div className="text-body-sm text-gray-700 font-medium">{goal.label}</div>
+          {/* Title */}
+          <div className="text-center mb-8">
+            <h1 className="heading-lg text-brand-red mb-2 tracking-wider" style={{ letterSpacing: '1.5px' }}>
+              OUR <span className="text-black">MISSION</span>
+            </h1>
+            <div className="mx-auto w-20 h-1 bg-brand-red rounded-full mb-2"></div>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Setting new standards in salt—globally recognized for quality and community impact.
+            </p>
+          </div>
+          {/* Mission Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
+            {missions.map((m, i) => (
+              <Card
+                key={i}
+                className="rounded-xl p-7 flex flex-col items-center border border-gray-100 shadow bg-white hover:shadow-md transition-all min-h-[260px]"
+              >
+                <div className="mb-2">{m.icon}</div>
+                <h2 className="text-lg font-bold text-brand-red mb-2 text-center">{m.title}</h2>
+                <p className="text-gray-700 text-center">{m.desc}</p>
               </Card>
             ))}
           </div>
+          {/* Goals Stats */}
+          <div className="mb-4">
+            <h2 className="text-xl font-bold text-brand-red mb-1 text-center">
+              Company at a Glance
+            </h2>
+            <div className="mx-auto w-12 h-1 bg-brand-red rounded mb-4"></div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {goals.map((goal) => (
+                <Card key={goal.label} className="bg-[#fff] text-center p-7 shadow-md border border-gray-100 rounded-xl">
+                  <div className={`text-4xl font-extrabold mb-1 ${goal.color}`}>{goal.value}</div>
+                  <div className="text-body-sm text-gray-700 font-medium">{goal.label}</div>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Layout>
   );
 };
 
