@@ -4,7 +4,7 @@ import { Users, Globe, Award, Briefcase } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Layout from "@/components/layout/Layout"; // Import the Layout component
+import Layout from "@/components/layout/Layout";
 
 const stats = [
   { label: "Years in Business", value: "20+", icon: Briefcase },
@@ -23,10 +23,10 @@ const AboutUs = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout> {/* Wrap the content with Layout */}
-      <section className="w-full flex flex-col items-center min-h-[80vh] pt-6 pb-16 bg-white">
-        <div className="section-container w-full max-w-6xl">
-          <BackButton to="/introduction" label="Back to Introduction" />
+    <Layout>
+      <section className="w-full flex flex-col items-center min-h-[80vh] pt-20 pb-16 bg-white">
+        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <BackButton to="/" label="Back to Home" /> {/* Replaced with Partners' BackButton props */}
 
           {/* Hero Title */}
           <div className="text-center mb-8">
