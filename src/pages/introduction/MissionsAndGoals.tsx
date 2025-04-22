@@ -2,7 +2,7 @@ import React from "react";
 import { Globe, Award, Briefcase, Leaf } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
 import { Card } from "@/components/ui/card";
-import Layout from "@/components/layout/Layout"; // Import the Layout component
+import Layout from "@/components/layout/Layout";
 
 const missions = [
   {
@@ -56,10 +56,10 @@ const goals = [
 
 const MissionsAndGoals = () => {
   return (
-    <Layout> {/* Wrap the content with Layout */}
-      <section className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-20 pb-16"> {/* Adjusted pt-6 to pt-20 */}
-        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8"> {/* Added responsive padding */}
-          <BackButton to="/introduction" label="Back to Introduction" />
+    <Layout>
+      <section className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-20 pb-16">
+        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <BackButton to="/" label="Back to Home" /> {/* Replaced with Partners' BackButton props */}
 
           {/* Title */}
           <div className="text-center mb-8">
