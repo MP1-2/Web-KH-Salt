@@ -9,7 +9,7 @@ const Hero = () => {
 
   return (
     <section className="bg-brand-black text-white relative h-[80vh] min-h-[600px] flex items-center">
-      <div className="absolute inset-0 bg-[url('https://www.shutterstock.com/image-photo/salt-farming-vietnam-260nw-2166721493.jpg')] bg-cover bg-center opacity-30"></div>
+      <div className="absolute inset-0 bg-[url('https://www.shutterstock.com/image-photo/woman-working-salt-farm-farming-thailand-1812124423')] bg-cover bg-center opacity-30"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent"></div>
       
       <div className="section-container relative z-10">
