@@ -27,18 +27,21 @@ const Hero = () => {
 
   return (
     <section className="bg-brand-black text-white relative h-[80vh] min-h-[600px] flex items-center">
-      <div className="absolute inset-0 bg-[url('{images[currentImageIndex]}')] bg-cover bg-center"></div>
+      <div 
+        className="absolute inset-0 bg-cover bg-center" 
+        style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+      ></div>
       
       <div className="section-container relative z-10 flex flex-col items-start w-full">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-in-left">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fly-in-left">
             <span className="text-brand-red">Premium Salt</span><br />
             <span className="text-white">From Vietnam</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-black max-w-2xl animate-slide-in-left animation-delay-200">
+          <p className="text-xl md:text-2xl mb-8 text-black max-w-2xl animate-fly-in-left animation-delay-200">
             Delivering high-quality salt products backed by over 30 years of experience and commitment to sustainability.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left animation-delay-400">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fly-in-left animation-delay-400">
             <Button size="lg" className="bg-brand-red hover:bg-red-700 text-white">
               <Link to="/products" className="flex items-center">
                 {t('home.products.title')}
