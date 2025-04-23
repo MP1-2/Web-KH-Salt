@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -12,25 +12,46 @@ const Hero = () => {
     'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80',
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState('next'); // Track direction for animation
 
   const handleNext = () => {
+    setDirection('next');
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const handlePrev = () => {
+    setDirection('prev');
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const handleDotClick = (index) => {
+    setDirection(index > currentImageIndex ? 'next' : 'prev');
     setCurrentImageIndex(index);
   };
 
   return (
-    <section className="bg-brand-black text-white relative h-[80vh] min-h-[600px] flex items-center">
-      <div 
-        className="absolute inset-0 bg-cover bg-center" 
-        style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
-      ></div>
+    <section className="bg-brand-black text-white relative h-[80vh] min-h-[600px] flex items-center overflow-hidden">
+      <div className="absolute inset-0">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${
+              index === currentImageIndex
+                ? 'opacity-100'
+                : 'opacity-0'
+            } ${
+              index === currentImageIndex
+                ? direction === 'next'
+                  ? 'animate-slide-in-right'
+                  : 'animate-slide-in-left'
+                : direction === 'next'
+                ? 'animate-slide-out-left'
+                : 'animate-slide-out-right'
+            }`}
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
+        ))}
+      </div>
       
       <div className="section-container relative z-10 flex flex-col items-start w-full">
         <div className="max-w-3xl">
