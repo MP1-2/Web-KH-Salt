@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const { t } = useLanguage();
+  const images = [
+    'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80',
+    'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80',
+    'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80',
+  ];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const handleDotClick = (index) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
     <section className="bg-brand-black text-white relative h-[80vh] min-h-[600px] flex items-center">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80')] bg-cover bg-center"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/80 to-transparent"></div>
+      <div className="absolute inset-0 bg-[url('{images[currentImageIndex]}')] bg-cover bg-center"></div>
       
-      <div className="section-container relative z-10 flex flex-col items-start">
+      <div className="section-container relative z-10 flex flex-col items-start w-full">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-in-left">
             <span className="text-brand-red">Premium Salt</span><br />
@@ -39,12 +56,30 @@ const Hero = () => {
             </Button>
           </div>
         </div>
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-between items-center w-full mt-8">
+          <Button 
+            onClick={handlePrev} 
+            className="bg-white/20 hover:bg-white/40 text-white rounded-full p-2"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
           <div className="flex gap-2">
-            <span className="h-3 w-3 rounded-full bg-white opacity-100"></span>
-            <span className="h-3 w-3 rounded-full bg-white opacity-50"></span>
-            <span className="h-3 w-3 rounded-full bg-white opacity-50"></span>
+            {images.map((_, index) => (
+              <span
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`h-3 w-3 rounded-full cursor-pointer ${
+                  currentImageIndex === index ? 'bg-white opacity-100' : 'bg-white opacity-50'
+                }`}
+              ></span>
+            ))}
           </div>
+          <Button 
+            onClick={handleNext} 
+            className="bg-white/20 hover:bg-white/40 text-white rounded-full p-2"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
         </div>
       </div>
     </section>
