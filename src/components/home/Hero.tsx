@@ -9,7 +9,8 @@ const Hero = () => {
 
   return (
     <section className="bg-brand-black text-white relative h-[80vh] min-h-[600px] flex items-center">
-      <div className="absolute inset-0 bg-[url('https://unsplash.com/photos/a-body-of-water-with-mountains-in-the-background-9xhu1BA1RqA')] bg-cover bg-center opacity-30"></div>
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80')] bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/80 to-transparent"></div>
       
       <div className="section-container relative z-10">
         <div className="max-w-3xl">
