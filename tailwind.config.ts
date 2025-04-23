@@ -131,6 +131,7 @@ export default {
       animationDelay: {
         200: '200ms',
         400: '400ms',
+        600: '600ms', // Added for the third product card
       }
     }
   },
