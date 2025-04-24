@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -8,8 +7,34 @@ import { Link } from 'react-router-dom';
 
 const NewsSection = () => {
   const { t } = useLanguage();
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Sample news data
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target); // Stop observing after the first trigger
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const news = [
     {
       id: 1,
@@ -50,18 +75,21 @@ const NewsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="section-container">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div>
-            <h2 className="heading-lg mb-2">
+            <h2 className={`heading-lg mb-2 transition-all duration-1000 ${isVisible ? 'animate-fly-in-left' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
               <span className="text-brand-red">{t('home.news.title')}</span>
             </h2>
-            <p className="text-body max-w-2xl">
+            <p className={`text-body max-w-2xl transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-200' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
               Stay updated with the latest news and developments from Khanh Hoa Salt.
             </p>
           </div>
-          <Button variant="link" className="text-brand-red mt-4 md:mt-0 p-0">
+          <Button 
+            variant="link" 
+            className={`text-brand-red mt-4 md:mt-0 p-0 transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-200' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}
+          >
             <Link to="/news" className="flex items-center">
               View All News
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -70,8 +98,11 @@ const NewsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {news.map((item) => (
-            <Card key={item.id} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow">
+          {news.map((item, index) => (
+            <Card 
+              key={item.id} 
+              className={`overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow transition-all duration-1000 ${isVisible ? `animate-fly-in-left animation-delay-${(index + 1) * 200}` : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}
+            >
               <div className="h-48 overflow-hidden">
                 <img
                   src={item.image}
@@ -88,7 +119,10 @@ const NewsSection = () => {
                 <p className="text-body-sm">{item.summary}</p>
               </CardContent>
               <CardFooter>
-                <Link to={item.path} className="text-brand-red hover:text-red-700 font-medium flex items-center">
+                <Link 
+                  to={item.path} 
+                  className="text-brand-red hover:text-red-700 font-medium flex items-center"
+                >
                   {t('home.news.readMore')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
