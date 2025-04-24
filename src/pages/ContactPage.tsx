@@ -56,7 +56,7 @@ const ContactPage = () => {
       <div className="pt-20 pb-20 bg-gray-50">
         <div className="section-container">
           <div className="text-center mb-12">
-           <BackButton to="/" label="Back to Home" />
+          <BackButton to="/" label={t('nav.backHome')} />
             <h1 className="heading-lg mb-4">
               <span className="text-brand-red">{t('nav.contact')}</span>
             </h1>
