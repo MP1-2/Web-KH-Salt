@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Linkedin } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import BackButton from "@/components/common/BackButton";
@@ -40,14 +40,42 @@ const leaders = [
 ];
 
 const LeadershipBoard = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Layout>
-      <section className="w-full flex flex-col items-center pt-20 pb-16 bg-white"> {/* Updated py-10 to pt-20 pb-16 */}
-        <div className="section-container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BackButton to="/" label="Back to Home" /> {/* Replaced with Partners' BackButton props */}
+      <section ref={sectionRef} className="w-full flex flex-col items-center pt-20 pb-20 bg-white">
+        <div className="section-container">
+          <BackButton to="/" label="Back to Home" />
           
           {/* Hero Title with Red Background Banner */}
-          <div className="bg-brand-red text-white py-6 px-8 mb-10 rounded-lg shadow-md">
+          <div className={`bg-brand-red text-white py-6 px-8 mb-10 rounded-lg shadow-md transition-all duration-1000 ${isVisible ? 'animate-fly-in-left' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
             <h1 className="text-3xl md:text-4xl font-bold tracking-wider uppercase text-center">
               Leadership Board
             </h1>
@@ -57,10 +85,10 @@ const LeadershipBoard = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {leaders.map((leader) => (
+            {leaders.map((leader, index) => (
               <Card
                 key={leader.name}
-                className="flex overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow"
+                className={`flex overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow transition-all duration-1000 ${isVisible ? `animate-fly-in-left animation-delay-${(index + 1) * 200}` : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}
               >
                 <div className="w-1/3 bg-gray-100 flex items-center justify-center p-4">
                   <img
