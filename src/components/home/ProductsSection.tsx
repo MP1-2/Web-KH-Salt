@@ -91,13 +91,14 @@ const ProductsSection = () => {
                 <p className="text-body-sm">{product.description}</p>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="border-brand-red text-brand-red hover:bg-brand-red hover:text-white w-full">
-                  <Link to={product.path} className="flex items-center justify-center w-full">
-                    {t('home.products.more')}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </CardFooter>
+              <Link
+                to={product.path}
+                className="text-brand-red hover:text-brand-black text-sm font-medium flex items-center transition-colors duration-300"
+              >
+                {t('home.products.more')}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </CardFooter>
             </Card>
           ))}
         </div>
