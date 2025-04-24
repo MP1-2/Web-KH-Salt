@@ -36,7 +36,7 @@ const CareerPage: React.FC = () => {
   return (
     <Layout>
       <section className="section-container py-10">
-        <BackButton to="/" label="Back to Home" />
+      <BackButton to="/" label={t('nav.backHome')} />
         <h1 className="heading-lg text-brand-red mb-6 flex items-center gap-2">
           <Briefcase className="text-brand-red" /> Careers
         </h1>
