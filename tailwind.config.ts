@@ -138,8 +138,9 @@ export default {
         400: '400ms',
         600: '600ms',
         800: '800ms',
-        1000: '1000ms', // Added for goals cards
-        1200: '1200ms', // Added for goals cards
+        1000: '1000ms',
+        1200: '1200ms',
+        1400: '1400ms', // Added for partner cards
       }
     }
   },
