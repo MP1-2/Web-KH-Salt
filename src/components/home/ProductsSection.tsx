@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ const ProductsSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target); // Stop observing after the first trigger
+          observer.unobserve(entry.target);
         }
       },
       {
@@ -90,13 +89,14 @@ const ProductsSection = () => {
               <CardContent>
                 <p className="text-body-sm">{product.description}</p>
               </CardContent>
-              <CardFooter>
-                <Button variant="outline" className="border-brand-red text-brand-red hover:bg-brand-red hover:text-white w-full">
-                  <Link to={product.path} className="flex items-center justify-center w-full">
-                    {t('home.products.more')}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
+              <CardFooter className="flex justify-start">
+                <Link
+                  to={product.path}
+                  className="inline-flex items-center gap-1 text-brand-red font-semibold hover:underline"
+                >
+                  {t('home.products.more')}
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
               </CardFooter>
             </Card>
           ))}
