@@ -53,7 +53,7 @@ const AboutUs = () => {
     <Layout>
       <section ref={sectionRef} className="w-full flex flex-col items-center min-h-[80vh] pt-20 pb-20 bg-white">
         <div className="section-container">
-          <BackButton to="/" label="Back to Home" />
+        <BackButton to="/" label={t('nav.backHome')} />
 
           {/* Hero Title */}
           <div className="text-center mb-8">
