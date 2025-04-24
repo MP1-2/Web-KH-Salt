@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BackButton from "@/components/common/BackButton";
 import { Card } from "@/components/ui/card";
 import Layout from "@/components/layout/Layout";
@@ -49,20 +49,48 @@ const partners = [
 ];
 
 const Partners = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Layout>
-      <section className="w-full flex flex-col items-center min-h-[70vh] bg-white pt-20 pb-16"> {/* Updated to match AboutUs structure */}
-        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8"> {/* Added to match AboutUs */}
-          <BackButton to="/" label="Back to Home" /> {/* Moved here to match AboutUs positioning */}
-          <h1 className="heading-lg text-brand-red mb-4 text-center">Partners</h1>
-          <p className="text-body max-w-2xl mx-auto text-center mb-7">
+      <section ref={sectionRef} className="w-full flex flex-col items-center min-h-[70vh] bg-white pt-20 pb-20">
+        <div className="section-container">
+          <BackButton to="/" label="Back to Home" />
+          <h1 className={`heading-lg text-brand-red mb-4 text-center transition-all duration-1000 ${isVisible ? 'animate-fly-in-left' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>Partners</h1>
+          <p className={`text-body max-w-2xl mx-auto text-center mb-7 transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-200' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
             We proudly collaborate with industry-leading partners who help deliver Khanh Hoa Salt products and values to every region and continent.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">
-            {partners.map((p) => (
+            {partners.map((p, index) => (
               <Card
                 key={p.name}
-                className="flex flex-col items-center bg-white/90 rounded-xl p-6 hover:border-brand-red border-transparent border shadow-lg transition-all duration-200 animate-fade-in"
+                className={`flex flex-col items-center bg-white/90 rounded-xl p-6 hover:border-brand-red border-transparent border shadow-lg transition-all duration-1000 ${isVisible ? `animate-fly-in-left animation-delay-${(index + 2) * 200}` : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}
               >
                 <a
                   href={p.link}
