@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ProductsSection = () => {
-  const { t } = useLanguage();
+  const { t } = useLanguage() || { t: (key) => key }; // Fallback if useLanguage fails
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,7 +14,7 @@ const ProductsSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target); // Stop observing after the first trigger
+          observer.unobserve(entry.target);
         }
       },
       {
@@ -38,22 +37,22 @@ const ProductsSection = () => {
   const products = [
     {
       id: 1,
-      name: t('products.product1'),
-      description: 'High-grade industrial salt designed for various industrial applications including chemical processing, water treatment, and manufacturing.',
+      name: t('products.product1') || 'Industrial Salt',
+      description: t('products.product1.description') || 'High-grade industrial salt designed for various industrial applications including chemical processing, water treatment, and manufacturing.',
       image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80",
       path: '/products/industrial-salt',
     },
     {
       id: 2,
-      name: t('products.product2'),
-      description: 'Premium table salt refined for culinary use, offering a perfect balance of flavor enhancement for all your cooking needs.',
+      name: t('products.product2') || 'Table Salt',
+      description: t('products.product2.description') || 'Premium table salt refined for culinary use, offering a perfect balance of flavor enhancement for all your cooking needs.',
       image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?q=80",
       path: '/products/table-salt',
     },
     {
       id: 3,
-      name: t('products.product3'),
-      description: 'Specialized salt formulations for specific industries and applications, including pharmaceutical, agriculture, and food processing.',
+      name: t('products.product3') || 'Specialty Salt',
+      description: t('products.product3.description') || 'Specialized salt formulations for specific industries and applications, including pharmaceutical, agriculture, and food processing.',
       image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80",
       path: '/products/specialty-salt',
     },
@@ -64,10 +63,10 @@ const ProductsSection = () => {
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className={`heading-lg mb-4 transition-all duration-1000 ${isVisible ? 'animate-fly-in-left' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
-            <span className="text-brand-red">{t('home.products.title')}</span>
+            <span className="text-brand-red">{t('home.products.title') || 'Our Products'}</span>
           </h2>
           <p className={`text-body max-w-2xl mx-auto transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-200' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
-            Discover our diverse range of salt products, crafted with precision and care to meet various consumer and industrial needs.
+            {t('home.products.description') || 'Discover our diverse range of salt products, crafted with precision and care to meet various consumer and industrial needs.'}
           </p>
         </div>
 
@@ -90,13 +89,14 @@ const ProductsSection = () => {
               <CardContent>
                 <p className="text-body-sm">{product.description}</p>
               </CardContent>
-              <CardFooter>
-                <Button variant="outline" className="border-brand-red text-brand-red hover:bg-brand-red hover:text-white w-full">
-                  <Link to={product.path} className="flex items-center justify-center w-full">
-                    {t('home.products.more')}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
+              <CardFooter className="flex justify-start">
+                <Link
+                  to={product.path}
+                  className="inline-flex items-center gap-1 text-brand-red font-semibold hover:underline"
+                >
+                  {t('home.products.more') || 'Learn More'}
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
               </CardFooter>
             </Card>
           ))}
