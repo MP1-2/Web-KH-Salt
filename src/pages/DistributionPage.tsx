@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/context/LanguageContext';
 import { Card } from '@/components/ui/card';
+import BackButton from "@/components/common/BackButton";
 
 const DistributionPage = () => {
   const { t, language } = useLanguage();
