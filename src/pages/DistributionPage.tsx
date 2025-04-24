@@ -81,6 +81,7 @@ const DistributionPage = () => {
       <div className="pt-20 pb-20">
         <div className="section-container">
           <div className="text-center mb-16">
+          <BackButton to="/" label="Back to Home" />
             <h1 className="heading-lg mb-4">
               <span className="text-brand-red">{t('distribution.title')}</span>
             </h1>
