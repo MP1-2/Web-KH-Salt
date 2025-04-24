@@ -58,7 +58,7 @@ export default {
           primary: 'hsl(var(--sidebar-primary))',
           'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
           accent: 'hsl(var(--sidebar-accent))',
-          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          'accuracy-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
@@ -137,6 +137,9 @@ export default {
         200: '200ms',
         400: '400ms',
         600: '600ms',
+        800: '800ms',
+        1000: '1000ms', // Added for goals cards
+        1200: '1200ms', // Added for goals cards
       }
     }
   },
