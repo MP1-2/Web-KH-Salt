@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Globe, Award, Briefcase, Leaf } from "lucide-react";
 import BackButton from "@/components/common/BackButton";
 import { Card } from "@/components/ui/card";
@@ -55,19 +55,47 @@ const goals = [
 ];
 
 const MissionsAndGoals = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Layout>
-      <section className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-20 pb-16">
-        <div className="section-container w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <BackButton to="/" label="Back to Home" /> {/* Replaced with Partners' BackButton props */}
+      <section ref={sectionRef} className="w-full flex flex-col items-center min-h-[80vh] bg-[#FAFAFA] pt-20 pb-20">
+        <div className="section-container">
+          <BackButton to="/" label="Back to Home" />
 
           {/* Title */}
           <div className="text-center mb-8">
-            <h1 className="heading-lg text-brand-red mb-2 tracking-wider" style={{ letterSpacing: '1.5px' }}>
+            <h1 className={`heading-lg text-brand-red mb-2 tracking-wider transition-all duration-1000 ${isVisible ? 'animate-fly-in-left' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`} style={{ letterSpacing: '1.5px' }}>
               OUR <span className="text-black">MISSION</span>
             </h1>
-            <div className="mx-auto w-20 h-1 bg-brand-red rounded-full mb-2"></div>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            <div className={`mx-auto w-20 h-1 bg-brand-red rounded-full mb-2 transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-200' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}></div>
+            <p className={`text-lg text-gray-700 max-w-3xl mx-auto transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-200' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
               Setting new standards in salt—globally recognized for quality and community impact.
             </p>
           </div>
@@ -76,7 +104,7 @@ const MissionsAndGoals = () => {
             {missions.map((m, i) => (
               <Card
                 key={i}
-                className="rounded-xl p-7 flex flex-col items-center border border-gray-100 shadow bg-white hover:shadow-md transition-all min-h-[260px]"
+                className={`rounded-xl p-7 flex flex-col items-center border border-gray-100 shadow bg-white hover:shadow-md transition-all min-h-[260px] transition-all duration-1000 ${isVisible ? `animate-fly-in-left animation-delay-${(i % 2 + 2) * 200}` : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}
               >
                 <div className="mb-2">{m.icon}</div>
                 <h2 className="text-lg font-bold text-brand-red mb-2 text-center">{m.title}</h2>
@@ -86,13 +114,16 @@ const MissionsAndGoals = () => {
           </div>
           {/* Goals Stats */}
           <div className="mb-4">
-            <h2 className="text-xl font-bold text-brand-red mb-1 text-center">
+            <h2 className={`text-xl font-bold text-brand-red mb-1 text-center transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-400' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}>
               Company at a Glance
             </h2>
-            <div className="mx-auto w-12 h-1 bg-brand-red rounded mb-4"></div>
+            <div className={`mx-auto w-12 h-1 bg-brand-red rounded mb-4 transition-all duration-1000 ${isVisible ? 'animate-fly-in-left animation-delay-400' : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}></div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {goals.map((goal) => (
-                <Card key={goal.label} className="bg-[#fff] text-center p-7 shadow-md border border-gray-100 rounded-xl">
+              {goals.map((goal, index) => (
+                <Card 
+                  key={goal.label} 
+                  className={`bg-[#fff] text-center p-7 shadow-md border border-gray-100 rounded-xl transition-all duration-1000 ${isVisible ? `animate-fly-in-left animation-delay-${(index + 3) * 200}` : 'translate-x-[-100%] translate-y-[20px] opacity-0'}`}
+                >
                   <div className={`text-4xl font-extrabold mb-1 ${goal.color}`}>{goal.value}</div>
                   <div className="text-body-sm text-gray-700 font-medium">{goal.label}</div>
                 </Card>
