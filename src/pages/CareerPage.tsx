@@ -4,7 +4,6 @@ import Layout from "@/components/layout/Layout";
 import BackButton from "@/components/common/BackButton";
 import { Briefcase } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "@/context/LanguageContext";
 
 // Dummy job data for demo
 const jobs = [
@@ -33,7 +32,6 @@ const jobs = [
 
 const CareerPage: React.FC = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
 
   return (
     <Layout>
